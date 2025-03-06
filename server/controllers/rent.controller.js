@@ -6,7 +6,9 @@ const jwt = require("jsonwebtoken");
 exports.createRent = async (req, res) => {
     try {
         const rent = await Rent.create(req.body);
-        res.status(201).json({ message: "Rent record created successfully", rent });
+        console.log("The rentage is created ", rent)
+        // res.status(201).json({ message: "Rent record created successfully", rent });
+        res.redirect("/tnt/wisper")
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -39,6 +41,29 @@ exports.getAllRent = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
+// GET ALL RENT RECORDS
+exports.getAllMyRent = async (req, res) => {
+    const userData = jwt.verify(req.cookies.tenant, process.env.JWT_SECRET);
+    try {
+        const myId = userData.tenant_id;
+
+        const rents = await Rent.findAll({
+            where: {
+                user_id : myId
+            }
+        });
+        res.json(rents);
+        const notice = []
+        console.log("This property is ", rents)
+        res.render('tenant-rent', { userData, notice, rents })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 
 // GET SINGLE RENT RECORD
 exports.getRentById = async (req, res) => {

@@ -36,7 +36,7 @@
           <div class="card-header pb-0">
             <div class="d-flex align-items-center">
               <p class="mb-0">Rent Form</p>
-              <button class="btn btn-primary btn-sm ms-auto">Submit</button>
+              <button class="btn btn-primary btn-sm ms-auto" type="submit">Submit</button>
             </div>
           </div>
           <div class="card-body">
@@ -46,6 +46,8 @@
                 <div class="form-group">
                   <label for="example-text-input" class="form-control-label">Property Name</label>
                   <input class="form-control" name="property_name" readonly type="text" value="<%= property.property_name %>">
+                  <input class="form-control" name="rent_id" readonly hidden type="text" value="<%= property.id %>">
+               
                 </div>
               </div>
               <div class="col-md-6">
@@ -119,16 +121,8 @@
       </div>
       <div class="col-md-4">
         <div class="card card-profile">
-          <img src="/assets/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top">
-          <div class="row justify-content-center">
-            <div class="col-4 col-lg-4 order-lg-2">
-              <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
-                <a href="javascript:;">
-                  <img src="/assets/img/team-2.jpg" class="rounded-circle img-fluid border border-2 border-white">
-                </a>
-              </div>
-            </div>
-          </div>
+          <img src="/assets/img/curved-images/curved10.jpg" alt="Image placeholder" class="card-img-top">
+          <br>
           <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
             <div class="d-flex justify-content-between">
               <a href="/tnt/profile" class="btn btn-sm btn-primary mb-0 d-none d-lg-block">View Profile
@@ -142,45 +136,9 @@
             </div>
           </div>
           <div class="card-body pt-0">
-            <div class="row">
-              <div class="col">
-                <div class="d-flex justify-content-center">
-                  <div class="d-grid text-center mx-4">
-                    <span class="text-lg font-weight-bolder">
-                      <%= userData.investment_amount%>
-                    </span>
-                    <span class="text-sm opacity-8">Current Balance </span>
-                  </div>
-                  <!-- <div class="d-grid text-center mx-4">
-                    <span class="text-lg font-weight-bolder"></span>
-                    <span class="text-sm opacity-8">Current Balance</span>
-                  </div> -->
-                  <div class="d-grid text-center">
-                    <span class="text-lg font-weight-bolder">
-                      <%= userData.investment_amount %>
-                    </span>
-                    <span class="text-sm opacity-8">Investment Total</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-4">
-              <h5>
-                <%= userData.full_name %><span class="font-weight-light">, </span>
-              </h5>
-              <div class="h6 font-weight-300">
-                <i class="ni location_pin mr-2"></i>
-                <%= userData.phone %>
-              </div>
-              <div class="h6 mt-4 text-capitalize">
-                <i class="ni business_briefcase-24 mr-2"></i>
-                <%= userData.acct_type %> - <%= userData.full_name %>
-              </div>
-              <div class="p-3">
-                <i class="ni education_hat mr-2"></i>
-                <%= userData.about ? userData.about : "About section is currently blank ." %>
-              </div>
-            </div>
+            <h4 class="text-center text-capitalize">
+              <%= property.property_name %>
+            </h4>
           </div>
         </div>
       </div>
