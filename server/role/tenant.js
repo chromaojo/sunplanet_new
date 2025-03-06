@@ -5,6 +5,7 @@ const investorController = require("../controllers/investor.controller");
 const savedProperty = require("../controllers/savedProperty.controller");
 const tenantController = require("../controllers/tenant.controller");
 const propertyController = require("../controllers/property.controller");
+const rentController = require("../controllers/rent.controller");
 const authenticateTenant = require("../middleware/authTenant");
 
 
@@ -63,8 +64,19 @@ router.get("/saved-delete/:id", savedProperty.deleteSavedProperty);
 
 
 
+// RENT SECTION 
+
+router.get("/rent-apply/:id", rentController.getRentalForm);
+router.get("/save-prop/", savedProperty.getAllMySaved);
 
 
+
+// CRUD Routes
+router.post("/rental/RwqTyZLilvwxXu", rentController.createRent);
+router.get("/rental/", rentController.getAllRent);
+router.get("/rental/:id", rentController.getRentById);
+router.put("/rental/:id", rentController.updateRent);
+router.delete("/rental/:id", rentController.deleteRent);
 
 
 

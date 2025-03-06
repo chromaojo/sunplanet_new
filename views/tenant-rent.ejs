@@ -1,0 +1,190 @@
+<div class="card shadow-lg mx-4 card-profile-bottom">
+  <div class="card-body p-3">
+    <div class="row gx-4">
+      <div class="col-auto">
+        <div class="avatar avatar-xl position-relative">
+          <img src="/assets1/img/logo.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+        </div>
+      </div>
+      <div class="col-auto my-auto">
+        <div class="h-100">
+          <h5 class="mb-1 text-uppercase">
+            Rental Form
+
+          </h5>
+          <p class="mb-0 font-weight-bold text-sm">
+            <%= userData.email %>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+        <p class="mb-0 text-capitalize">Application By :
+          <b>
+            <%- userData.full_name %>
+          </b>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid py-4">
+
+  <form action="/tnt/rental/RwqTyZLilvwxXu" method="POST">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header pb-0">
+            <div class="d-flex align-items-center">
+              <p class="mb-0">Rent Form</p>
+              <button class="btn btn-primary btn-sm ms-auto">Submit</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="text-uppercase text-sm">Property Information</p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Property Name</label>
+                  <input class="form-control" name="property_name" readonly type="text" value="<%= property.property_name %>">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Property Address</label>
+                  <input class="form-control" readonly type="text" name="address"
+                    value="<%= property.address %>, <%= property.city %>, <%= property.state %> State, <%= property.country %>,">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Property Type</label>
+                  <input class="form-control" readonly name="property_type" type="text" value="<%= property.property_type %>">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Fees (NGN) </label>
+                  <input class="form-control" readonly name="rent_price" type="text" value="<%= property.rent_price %>">
+                </div>
+              </div>                   <input class="form-control" name="user_id" readonly hidden type="text" value="<%= userData.tenant_id %>">
+
+              <p class="text-uppercase text-sm">Occupant Information</p>
+
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Occupant Name</label>
+                  <input class="form-control" type="text" required name="occpant_name">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Occupant Phone Number</label>
+                  <input class="form-control" type="text" required name="occpant_phone">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label"> Unit(s) Needed </label>
+                  <input class="form-control" type="number" required name="unit">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label"> Duration </label>
+                  <input class="form-control" type="number" required name="duration">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label"> Start Date</label>
+                  <input class="form-control" type="date" required name="rent_start_date">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Next Of Kin (Name)</label>
+                  <input class="form-control" type="text" required name="next_of_kin">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label">Kin Phone Number</label>
+                  <input class="form-control" type="number" required name="kin_phone">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <img src="/assets/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top">
+          <div class="row justify-content-center">
+            <div class="col-4 col-lg-4 order-lg-2">
+              <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
+                <a href="javascript:;">
+                  <img src="/assets/img/team-2.jpg" class="rounded-circle img-fluid border border-2 border-white">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+            <div class="d-flex justify-content-between">
+              <a href="/tnt/profile" class="btn btn-sm btn-primary mb-0 d-none d-lg-block">View Profile
+
+              </a>
+              <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-block d-lg-none"><i
+                  class="ni ni-collection"></i></a>
+              <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block">Message</a>
+              <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-block d-lg-none"><i
+                  class="ni ni-email-83"></i></a>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <div class="row">
+              <div class="col">
+                <div class="d-flex justify-content-center">
+                  <div class="d-grid text-center mx-4">
+                    <span class="text-lg font-weight-bolder">
+                      <%= userData.investment_amount%>
+                    </span>
+                    <span class="text-sm opacity-8">Current Balance </span>
+                  </div>
+                  <!-- <div class="d-grid text-center mx-4">
+                    <span class="text-lg font-weight-bolder"></span>
+                    <span class="text-sm opacity-8">Current Balance</span>
+                  </div> -->
+                  <div class="d-grid text-center">
+                    <span class="text-lg font-weight-bolder">
+                      <%= userData.investment_amount %>
+                    </span>
+                    <span class="text-sm opacity-8">Investment Total</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-4">
+              <h5>
+                <%= userData.full_name %><span class="font-weight-light">, </span>
+              </h5>
+              <div class="h6 font-weight-300">
+                <i class="ni location_pin mr-2"></i>
+                <%= userData.phone %>
+              </div>
+              <div class="h6 mt-4 text-capitalize">
+                <i class="ni business_briefcase-24 mr-2"></i>
+                <%= userData.acct_type %> - <%= userData.full_name %>
+              </div>
+              <div class="p-3">
+                <i class="ni education_hat mr-2"></i>
+                <%= userData.about ? userData.about : "About section is currently blank ." %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

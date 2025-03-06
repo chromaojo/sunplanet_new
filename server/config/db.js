@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     host: process.env.DB_HOST,
     dialect: 'mysql',
     waitForConnections: true,
-    logging: process.env.NODE_ENV === 'development' ? console.log : false, // Enable logging in dev
+    logging: process.env.NODE_ENV === 'production' ? console.log : false, // Enable logging in dev
 });
 
 console.log('Database Connected')

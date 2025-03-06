@@ -9,7 +9,8 @@
                 <div class="numbers">
                   <p class="text-sm mb-3 text-uppercase font-weight-bold">
                     <img src="/assets/img/icons/flags/nijja.gif" alt="Country flag" width="30px">
-                   Property <%=property.action.replace('_', ' ') %> -- ₦ <%= property.rent_price %>
+                   Property <%=property.action.replace('_', ' ') %> --  ₦<%= Number (property.rent_price).toLocaleString() %>
+             
                   </p>
                   <h5 class="font-weight-bolder text-capitalize">
                     <%=property.property_name %>
@@ -31,17 +32,17 @@
                       </p>
                       <p class="mb-3 text-capitalize">
                         <span class="text-success text-sm font-weight-bolder">Amount </span>
-                        <%=property.rent_price %> NGN
+                        ₦<%= Number (property.rent_price).toLocaleString() %>
                       </p>
                       <p class="mb-3 mt-3 text-capitalize">
                         <span class="text-success text-sm font-weight-bolder">Info : </span>
-                        <%=property.description %>
+                        <%= property.description %>
                       </p>
                       
                     </div>
                     <div class="col-md-6 p-2">
                       <b class="text-capitalize">
-                       Status :  <%=property.lease_status %> 
+                       Status :  <%= property.lease_status %> 
                       </b> <br>
                       <p class="mb-3 mt-3 text-capitalize">
                         <b>
@@ -53,7 +54,7 @@
                         <span class="text-success text-sm font-weight-bolder">Bathroom(s)</span>
                         <%=property.bathrooms %> unit(s)
                       </p>
-                      <a href="" class="btn btn-primary mt-3">Apply Now</a>
+                      <a href="/tnt/rent-apply/<%= property.id %>" class="btn btn-primary mt-3">Apply Now</a>
                     </div>
                   </div>
 

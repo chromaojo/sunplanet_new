@@ -1,10 +1,30 @@
 const Rent = require("../models/Rent");
+const Property = require("../models/Property");
+const jwt = require("jsonwebtoken");
 
 // CREATE RENT RECORD
 exports.createRent = async (req, res) => {
     try {
         const rent = await Rent.create(req.body);
         res.status(201).json({ message: "Rent record created successfully", rent });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// To Get Rental Form 
+
+exports.getRentalForm = async (req, res) => {
+    try {
+        const properties = await Property.findByPk(req.params.id);
+        if (!properties) return res.status(404).json({ error: "Property not found" });
+
+        // res.json(property);
+        const property = properties.dataValues
+        const userData = jwt.verify(req.cookies.tenant, process.env.JWT_SECRET);
+        const notice = []
+        console.log("This property is ", property)
+        res.render('tenant-rent', { userData, notice, property })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

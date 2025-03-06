@@ -44,6 +44,8 @@ exports.getPropertyById = async (req, res) => {
     }
 };
 
+
+
 // UPDATE PROPERTY
 exports.updateProperty = async (req, res) => {
     try {
