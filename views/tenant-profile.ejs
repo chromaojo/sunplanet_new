@@ -80,7 +80,7 @@
               <div class="d-flex justify-content-center">
                 <div class="d-grid text-center mx-4">
                   <span class="text-lg font-weight-bolder">
-                    <%= userData.tenant_balance %>
+                    ₦ <%= userData.tenant_balance %>
                   </span>
                   <span class="text-sm opacity-8">Current Balance </span>
                 </div>
@@ -90,7 +90,7 @@
                   </div> -->
                 <div class="d-grid text-center">
                   <span class="text-lg font-weight-bolder">
-                    <%= userData.total_spent %>
+                    ₦<%= userData.total_spent %>
                   </span>
                   <span class="text-sm opacity-8">Spent Total</span>
                 </div>
@@ -144,7 +144,7 @@
                     <%= userData.address %>
                   </span></span>
                 <span class="mb-4 text-xs">Tenant Balance : <span class="text-dark ms-sm-2 font-weight-bold">
-                   N <%= userData.tenant_balance %>
+                  ₦ <%= userData.tenant_balance %>
                   </span></span>
                   <span class="mb-4 text-xs">About  : <span class="text-dark ms-sm-2 font-weight-bold">
                     <%= userData.about ? userData.about : "Kindly describe yourself "  %>
