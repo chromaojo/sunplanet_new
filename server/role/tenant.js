@@ -14,7 +14,6 @@ router.get('/', authenticateTenant ,(req, res)=>{
     const notice = [];
     const userData = req.tenant;
 
-    console.log("The user Data is ",userData)
     res.render('tenant-dash', {userData , notice})
 })
 
