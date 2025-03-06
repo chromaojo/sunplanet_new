@@ -1,0 +1,113 @@
+<% if (investments.length> 0) { %>
+    <div id="invest-all p-3">
+        <div class="row mt-4">
+            <div class="col-lg-12 mb-lg-0 mb-4">
+                <div class="card ">
+                    <div class="card-header pb-0 p-3">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-2">Investment Portfolio</h6>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center ">
+                            <tbody>
+                                <% investments.forEach(investment=> { %>
+
+                                    <tr>
+                                        <td class="w-30">
+
+                                            <a href="/invst/inves/<%= investment.id %>">
+                                                <div class="d-flex px-2 py-1 align-items-center">
+                                                    <div>
+                                                        <img src="../assets/img/icons/flags/nijja.gif"
+                                                            alt="Country flag" width="23px">
+                                                    </div>
+                                                    <div class="ms-4">
+                                                        <p class="text-xs font-weight-bold mb-0">Investment Plan :</p>
+                                                        <h6 class="text-sm mb-0 text-capitalize">
+                                                            <%= investment.investment_plan %>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/invst/inves/<%= investment.id %>">
+                                                <div class="text-center">
+                                                    <p class="text-xs font-weight-bold mb-0">Invested Amount :</p>
+                                                    <h6 class="text-sm mb-0">
+                                                        ₦ <%= investment.investment_amount.toLocaleString() %>
+                                                    </h6>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/invst/inves/<%= investment.id %>">
+                                                <div class="text-center">
+                                                    <p class="text-xs font-weight-bold mb-0">Duration (Months):</p>
+                                                    <h6 class="text-sm mb-0">
+                                                        <%= investment.investment_duration %>
+                                                    </h6>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/invst/inves/<%= investment.id %>">
+                                                <div class="text-center">
+                                                    <p class="text-xs font-weight-bold mb-0">Expected Amount :</p>
+                                                    <h6 class="text-sm mb-0">
+                                                        ₦ <%= investment.expected_return.toLocaleString() %>
+                                                    </h6>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="align-middle text-sm">
+                                            <a href="/invst/inves/<%= investment.id %>">
+                                                <div class="col text-center">
+                                                    <p class="text-xs font-weight-bold mb-0">Start Date :</p>
+                                                    <h6 class="text-sm mb-0">
+                                                        <%= new Date(investment.start_date).toLocaleDateString() %>
+                                                    </h6>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="align-middle text-sm">
+                                            <a href="/invst/inves/<%= investment.id %>">
+                                                <div class="col text-center">
+                                                    <p class="text-xs font-weight-bold mb-0">End Date :</p>
+                                                    <h6 class="text-sm mb-0">
+                                                        <%= investment.end_Date ? new
+                                                            Date(investment.end_Date).toLocaleDateString() : 'N/A' %>
+                                                    </h6>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td class="align-middle text-sm">
+                                            <div class="col text-center">
+                                                <p class="text-xs font-weight-bold mb-0">Status :</p>
+                                                <h6 class="text-sm mb-0 text-capitalize ">
+                                                    <%= investment.status %>
+                                                </h6>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <% }); %>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> <br>
+
+    <% } else { %>
+        <div class="row mt-4">
+            <div class="card p-4">
+                <h3 class="text-capitalize text-center">There is currently no investment Available Here</h3>
+            </div>
+        </div> <br>
+        <% } %>
