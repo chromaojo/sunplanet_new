@@ -73,11 +73,10 @@ router.get("/save-prop/", savedProperty.getAllMySaved);
 
 // CRUD Routes
 router.post("/rental/RwqTyZLilvwxXu", rentController.createRent);
-router.get("/rental/", rentController.getAllRent);
+router.get("/rental/", rentController.getAllMyRent);
 router.get("/rental/:id", rentController.getRentById);
 router.put("/rental/:id", rentController.updateRent);
 router.delete("/rental/:id", rentController.deleteRent);
-
 
 
 

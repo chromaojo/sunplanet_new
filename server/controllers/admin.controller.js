@@ -38,9 +38,9 @@ exports.loginAdmin = async (req, res) => {
         const token = jwt.sign(admin, process.env.JWT_SECRET, {
             expiresIn: "7d",
         });
-        console.log("ThevalidPassword data is ",validPassword)
+
         // Set HTTP-only cookie
-        res.cookie("admin", admin, { httpOnly: true });
+        res.cookie("admin", token, { httpOnly: true });
         // res.json({ message: "Login successful", token, admin });
         res.redirect('/spco')
 

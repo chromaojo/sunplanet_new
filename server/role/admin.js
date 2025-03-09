@@ -6,6 +6,7 @@ const adminController = require("../controllers/admin.controller");
 const helpDeskController = require("../controllers/helpdesk.controller");
 const investorController = require("../controllers/investor.controller");
 const tenantController = require("../controllers/tenant.controller");
+const authAdmin = require("../middleware/authAdmin");
 
 
 
@@ -13,8 +14,12 @@ const tenantController = require("../controllers/tenant.controller");
 
 
 // Dashboard Section 
-router.get('/', (req, res)=>{
-    res.render('/dashboard')
+router.get('/', authAdmin ,(req, res)=>{
+
+    const notice = [];
+    const userData = req.admin;
+
+    res.render('admin-dash', {userData , notice})
 })
 
 
