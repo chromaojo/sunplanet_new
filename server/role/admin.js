@@ -1,7 +1,7 @@
 const express = require("express");
+const propertyController = require("../controllers/property.controller");
 const router = express.Router();
 const rentController = require("../controllers/rent.controller");
-const propertyController = require("../controllers/property.controller");
 const adminController = require("../controllers/admin.controller");
 const helpDeskController = require("../controllers/helpdesk.controller");
 const investorController = require("../controllers/investor.controller");
@@ -46,8 +46,41 @@ router.get('/create-investment', authAdmin ,(req, res)=>{
     res.render('admin-invest_form', {userData , notice})
 })
 router.post("/investment/", createInvestment);
+
+// Undone 
 router.put("/investment/:id", updateInvestment);
 router.delete("/investment/:id", deleteInvestment);
+
+// Properties Routes
+
+router.post("/props/", propertyController.createProperty);
+router.get("/props/", propertyController.getAllPropertiesAdmin);
+router.get("/props/:id", propertyController.getPropertyByIdAdmin);
+
+router.put("//props:id", propertyController.updateProperty);
+router.delete("props/:id", propertyController.deleteProperty);
+
+
+
+// Help Desk Section
+
+// Get All Help Request
+router.get("/help-desk/", helpDeskController.getAllHelpDeskAd);
+// Get Only One Help 
+router.get("/help/:id", helpDeskController.getHelpDeskById);
+// Edit Help 
+router.put("/help/:id", helpDeskController.updateHelpDesk);
+
+
+
+
+
+
+
+
+
+
+// User Section 
 
 
 // Admin Section 
@@ -91,14 +124,6 @@ router.delete("/prop/:id", propertyController.deleteProperty);
 
 
 
-// Help Desk Section
-
-// Get All Help Request
-router.get("/help/", helpDeskController.getAllHelpDesk);
-// Get Only One Help 
-router.get("/help/:id", helpDeskController.getHelpDeskById);
-// Edit Help 
-router.put("/help/:id", helpDeskController.updateHelpDesk);
 
 
 // Rent Section 

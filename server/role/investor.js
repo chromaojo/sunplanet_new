@@ -53,9 +53,8 @@ router.put("/inv/:id", investorController.updateInvestor);
 
 // CRUD Routes
 router.post("/help", helpDeskController.createHelpDesk);
-router.get("/help", helpDeskController.getAllHelpDesk);
+router.get("/help", helpDeskController.getAllMyHelp);
 router.get("/help/:id", helpDeskController.getHelpDeskById);
-
 
 
 

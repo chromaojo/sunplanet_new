@@ -1,13 +1,14 @@
 <div class="container mt-5">
     <h2 class="text-center text-light font-weight-bold">Create Investment</h2>
-    <form class="p-4 border rounded bg-light needs-validation" novalidate>
+    
+    <form action="/spco/investment" class="p-4 border rounded bg-light needs-validation" novalidate method="POST">
 
         <div class="row">
             <div class="col-6">
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Investment Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter new property name" required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter new property name" name="property_name" required>
                     <div class="invalid-feedback">Please enter investment name.</div>
                 </div>
             </div>
@@ -15,7 +16,7 @@
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Investment Amount (Unit price)</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                    <input type="number" name="investment_amount" class="form-control" id="name" placeholder="Enter unit investment price" required>
                     <div class="invalid-feedback">Please enter unit price</div>
                 </div>
             </div>
@@ -25,16 +26,16 @@
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Expected Returns (ROI)</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter return on investment" required>
+                    <input type="number" name="expected_return" class="form-control" id="name" placeholder="Enter return on investment" required>
                     <div class="invalid-feedback">Please enter the returns on investment.</div>
                 </div>
             </div>
             <div class="col-6">
                 <!-- Name Field -->
                 <div class="mb-3">
-                    <label for="name" class="form-label">Investment Duration</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Duration" required>
-                    <div class="invalid-feedback">Please enter unit price</div>
+                    <label for="name" class="form-label">Investment Duration (Month)</label>
+                    <input type="number" name="investment_duration" class="form-control" id="name" placeholder="Enter Duration" required>
+                    <div class="invalid-feedback">Please enter investment duration</div>
                 </div>
             </div>
         </div>
@@ -43,8 +44,9 @@
             <div class="col-6">
                 <!-- Name Field -->
                 <div class="mb-3">
-                    <label for="name" class="form-label">Investment Details </label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter return on investment" required>
+                    <label for="message" class="form-label">Investment Details</label>
+                    <textarea class="form-control" name="details" id="message" rows="4" placeholder="Write investment details..."
+                        required></textarea>
                     <div class="invalid-feedback">Please enter the returns on investment.</div>
                 </div>
             </div>
@@ -58,27 +60,26 @@
                         <option value="closed">Closed</option>
                         <option value="pending">Pending</option>
                     </select>
-                    <div class="invalid-feedback">Please select a role.</div>
+                    <div class="invalid-feedback">Please select a status.</div>
+                </div>
+                <!-- Checkbox -->
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="terms" required>
+                    <label class="form-check-label" for="terms">
+                        I have cross checked the details inputted .
+                    </label>
+                    <div class="invalid-feedback">Ensure every information is accurate.</div>
                 </div>
 
             </div>
         </div>
 
 
-
-      
-
-        <!-- Checkbox -->
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="" id="terms" required>
-            <label class="form-check-label" for="terms">
-                Agree to terms and conditions
-            </label>
-            <div class="invalid-feedback">You must agree before submitting.</div>
+        <div class="text-center">
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-50">Submit</button>
         </div>
 
-        <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary w-100">Submit</button>
     </form>
 </div>
 

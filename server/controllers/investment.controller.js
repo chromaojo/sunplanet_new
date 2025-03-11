@@ -17,7 +17,9 @@ exports.createInvestment = async (req, res) => {
             investment_duration,
         });
 
-        res.status(201).json({ message: "Investment created successfully", investment: newInvestment });
+        res.redirect('/spco/investment')
+
+        // res.status(201).json({ message: "Investment created successfully", investment: newInvestment });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

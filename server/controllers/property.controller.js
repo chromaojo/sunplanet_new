@@ -44,6 +44,36 @@ exports.getPropertyById = async (req, res) => {
     }
 };
 
+// GET ALL PROPERTIES
+exports.getAllPropertiesAdmin = async (req, res) => {
+    try {
+        const properties = await Property.findAll();
+        // res.json(properties);
+
+        
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        const notice = []
+        res.render('admin-prop', { userData, notice, properties })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// GET PROPERTY BY ID
+exports.getPropertyByIdAdmin = async (req, res) => {
+    try {
+        const properties = await Property.findByPk(req.params.id);
+        if (!properties) return res.status(404).json({ error: "Property not found" });
+
+        // res.json(property);
+        const property = properties.dataValues
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        const notice = []
+        res.render('admin-prop1', { userData, notice, property })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 
 
 // UPDATE PROPERTY
@@ -51,7 +81,7 @@ exports.updateProperty = async (req, res) => {
     try {
         const property = await Property.findByPk(req.params.id);
         if (!property) return res.status(404).json({ error: "Property not found" });
-
+        
         await property.update(req.body);
         res.json({ message: "Property updated successfully", property });
     } catch (error) {

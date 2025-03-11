@@ -25,16 +25,16 @@ exports.createHelpDesk = async (req, res) => {
 };
 
 // GET ALL HELP DESK TICKETS
-exports.getAllHelpDesk = async (req, res) => {
+exports.getAllHelpDeskAd = async (req, res) => {
     try {
         const helpDesks = await HelpDesk.findAll();
         // res.json(helpDesks);
 
 
-        const userData = jwt.verify(req.cookies.investor, process.env.JWT_SECRET);
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
         const notice = []
 
-        res.render('invest-help', { userData, notice, helpDesks })
+        res.render('admin-help', { userData, notice, helpDesks })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
