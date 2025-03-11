@@ -32,15 +32,15 @@ exports.getAllInvestments = async (req, res) => {
         // res.json(investments);
 
         const userData = jwt.verify(req.cookies.investor, process.env.JWT_SECRET);
-
         const notice = []
-
+        
         res.render('invest-investment', { userData, notice, investments })
     } catch (error) {
         console.log("the eror is ", error)
         res.status(500).json({ error: error.message });
     }
 };
+
 
 exports.getAllActive = async (req, res) => {
     try {
@@ -58,9 +58,46 @@ exports.getAllActive = async (req, res) => {
     }
 };
 
+
+exports.getAllAdminInvest = async (req, res) => {
+    try {
+        const investments = await Investment.findAll();
+        // res.json(investments);
+
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+
+        const notice = []
+        console.log('The invesment ', investments)
+
+        res.render('admin-investment', { userData, notice, investments })
+    } catch (error) {
+        console.log("the eror is ", error)
+        res.status(500).json({ error: error.message });
+    }
+};
+
 /**
  * GET SINGLE INVESTMENT
  */
+exports.getInvestmentByIdAd = async (req, res) => {
+    try {
+        const investments = await Investment.findByPk(req.params.id);
+        if (!investments) return res.status(404).json({ error: "Investment not found" });
+
+        // res.json(investment);
+        const investment = investments.dataValues
+        const userData = jwt.verify(req.cookies.investor, process.env.JWT_SECRET);
+        const notice = []
+        console.log("The investment ",investment)
+   
+
+        res.render('admin-investment1', { userData, notice, investment })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+/** * GET SINGLE INVESTMENT */
 exports.getInvestmentById = async (req, res) => {
     try {
         const investments = await Investment.findByPk(req.params.id);

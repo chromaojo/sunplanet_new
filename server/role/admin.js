@@ -7,9 +7,16 @@ const helpDeskController = require("../controllers/helpdesk.controller");
 const investorController = require("../controllers/investor.controller");
 const tenantController = require("../controllers/tenant.controller");
 const authAdmin = require("../middleware/authAdmin");
-
-
-
+const {
+    createInvestment,
+    getAllInvestments,
+    getInvestmentById,
+    updateInvestment,
+    deleteInvestment,
+    getAllAdmin,
+    getAllAdminInvest,
+    getInvestmentByIdAd
+} = require("../controllers/investment.controller");
 
 
 
@@ -23,7 +30,16 @@ router.get('/', authAdmin ,(req, res)=>{
 })
 
 
-// Admin Section
+
+// Investment section 
+router.post("/investment/", createInvestment);
+router.get("/investment/", getAllAdminInvest);
+router.get("/investment/:id", getInvestmentByIdAd);
+router.put("/investment/:id", updateInvestment);
+router.delete("/investment/:id", deleteInvestment);
+
+
+// Admin Section 
 
 // Register new Admin 
 router.post("/admin/", adminController.createAdmin);
