@@ -86,11 +86,8 @@ exports.getInvestmentByIdAd = async (req, res) => {
 
         // res.json(investment);
         const investment = investments.dataValues
-        const userData = jwt.verify(req.cookies.investor, process.env.JWT_SECRET);
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
         const notice = []
-        console.log("The investment ",investment)
-   
-
         res.render('admin-investment1', { userData, notice, investment })
     } catch (error) {
         res.status(500).json({ error: error.message });

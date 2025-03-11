@@ -31,7 +31,7 @@ const Investment = sequelize.define(
             allowNull: false,
         },
         status: {
-            type: DataTypes.ENUM("pending", "active", "complete"),
+            type: DataTypes.ENUM("pending", "active", "closed"),
             defaultValue: "pending",
         },
     },

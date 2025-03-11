@@ -32,9 +32,20 @@ router.get('/', authAdmin ,(req, res)=>{
 
 
 // Investment section 
-router.post("/investment/", createInvestment);
+
 router.get("/investment/", getAllAdminInvest);
 router.get("/investment/:id", getInvestmentByIdAd);
+
+// To get create ivestment page 
+// Dashboard Section 
+router.get('/create-investment', authAdmin ,(req, res)=>{
+
+    const notice = [];
+    const userData = req.admin;
+
+    res.render('admin-invest_form', {userData , notice})
+})
+router.post("/investment/", createInvestment);
 router.put("/investment/:id", updateInvestment);
 router.delete("/investment/:id", deleteInvestment);
 
