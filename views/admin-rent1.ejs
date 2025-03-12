@@ -1,0 +1,188 @@
+<div id="indeex">
+  <div class="row mt-2 mb-4">
+    <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-2 m-3">
+          <div class="row">
+            <div class="col-3 text-end p-1">
+              <img src="/assets1/img/logo.png" class="navbar-brand-img m-4" alt="main_logo" width="95%">
+            </div>
+            <div class="col-1"></div>
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Property Details </p>
+                <h5 class="font-weight-bolder text-capitalize">
+                  <%= rent.property_name %>
+                </h5>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-1">
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Rent Fee</h6>
+          <span class="text-xs">
+            ₦ <%= rent.rent_price %>
+          </span>
+          <hr class="horizontal dark my-3">
+          <h5 class="mb-0 text-capitalize"><%= rent.status %></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Rent Duration</h6>
+          <span class="text-xs">
+            <%= rent.rent_start_date %> -
+          </span>
+          <hr class="horizontal dark my-3">
+          <h5 class="mb-0 text-capitalize"><%= rent.rent_end_date %></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0">Property Type</h6>
+          <span class="text-xs">
+            <%= rent.property_type %>
+          </span>
+          <hr class="horizontal dark my-3">
+          <h5 class="mb-0 text-capitalize"><%= rent.status %></h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Occupant Name</h6>
+          <span class="text-xs">
+            <%= rent.occupant_name %>
+          </span>
+          <hr class="horizontal dark my-3">
+          <h5 class="mb-0 text-capitalize"><%= rent.status %></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Occupant Phone</h6>
+          <span class="text-xs"><%= rent.occupant_phone %></span>
+          <hr class="horizontal dark my-3">
+          <h5 class="mb-0 text-capitalize text-capitalize"><%= rent.status %></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Next Of Kin</h6>
+          <span class="text-xs"><%= rent.next_of_kin %></span>
+          <hr class="horizontal dark my-3">
+          <h5 class="mb-0 text-capitalize text-capitalize"><%= rent.kin_phone %></h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Kin Address</h6>
+          <span class="text-xs">
+            <%= rent.kin_address ? rent.kin_address : "Address is empty " %>
+          </span>
+          <hr class="horizontal dark my-3">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-xl-3 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Kin Phone</h6>
+          <span class="text-xs"><%= rent.kin_phone %></span>
+          <hr class="horizontal dark my-3">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0">Address</h6>
+          <span class="text-xs">
+            <%= rent.address %>
+          </span>
+          <hr class="horizontal dark my-3">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-header mx-4 p-3 text-center">
+          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
+            <i class="fas fa-landmark opacity-10"></i>
+          </div>
+        </div>
+        <div class="card-body pt-0 p-3 text-center">
+          <h6 class="text-center mb-0 text-capitalize">Admin Comment </h6>
+          <span class="text-xs"><%- rent.comment ? rent.comment : "No comment yet" %></span>
+          <hr class="horizontal dark my-3">
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -59,7 +59,44 @@ exports.getAllRent = async (req, res) => {
         const rents = await Rent.findAll({
             order: [["createdAt", "DESC"]], // Orders by newest first
         });
-        res.json(rents);
+        // res.json(rents);
+
+        
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        const notice = [];
+        res.render('admin-rent', { userData, notice, rents });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// GET SINGLE RENT RECORD
+exports.getRentByIdAdmin = async (req, res) => {
+    try {
+        const rent = await Rent.findByPk(req.params.id);
+        if (!rent) return res.status(404).json({ error: "Rent record not found" });
+
+        // res.json(rent);
+
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        const notice = [];
+        res.render('admin-rent1', { userData, notice, rent });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// GET SINGLE RENT RECORD
+exports.getRentById = async (req, res) => {
+    try {
+        const rent = await Rent.findByPk(req.params.id);
+        if (!rent) return res.status(404).json({ error: "Rent record not found" });
+
+        // res.json(rent);
+
+        const userData = jwt.verify(req.cookies.tenant, process.env.JWT_SECRET);
+        const notice = [];
+        res.render('tenant-rental1', { userData, notice, rent });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -101,7 +138,6 @@ exports.getRentById = async (req, res) => {
 
         const userData = jwt.verify(req.cookies.tenant, process.env.JWT_SECRET);
         const notice = [];
-        console.log("This property is ", rent);
         res.render('tenant-rental1', { userData, notice, rent });
     } catch (error) {
         res.status(500).json({ error: error.message });

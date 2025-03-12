@@ -74,8 +74,11 @@ route.get('/sampler', regSamp)
 
 // Admin Login 
 route.get('/login-admin', AvoidIndex, (req, res) => {
+    
 
-    res.sendFile(path.join(__dirname, "../../statics", 'loginAdmin.html'));
+    // res.sendFile(path.join(__dirname, "../../statics", 'loginAdmin.html'));
+
+    return res.render('loginAdmin', { layout: false })
 })
 
 // Investor Login 
@@ -99,6 +102,14 @@ route.post('/KjXxXYtF/login', loginInvestor)
 
 // Tenant Login 
 route.post('/tTxDiIOzXlO/login', loginTenant)
+
+
+
+
+
+
+
+
 
 
 

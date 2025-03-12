@@ -67,12 +67,20 @@ router.delete("props/:id", propertyController.deleteProperty);
 // Get All Help Request
 router.get("/help-desk/", helpDeskController.getAllHelpDeskAd);
 // Get Only One Help 
-router.get("/help/:id", helpDeskController.getHelpDeskById);
+router.get("/help-desk/:id", helpDeskController.getHelpDeskByIdAdmin);
 // Edit Help 
 router.put("/help/:id", helpDeskController.updateHelpDesk);
 
 
+// Rent Section 
+router.post("/create/rent", rentController.createRent);
+router.get("/rent/", rentController.getAllRent);
+router.get("/rent/:id", rentController.getRentByIdAdmin);
+router.put("/rent/:id", rentController.updateRent);
+router.delete("/rent/:id", rentController.deleteRent);
 
+
+ 
 
 
 
@@ -81,6 +89,15 @@ router.put("/help/:id", helpDeskController.updateHelpDesk);
 
 
 // User Section 
+
+// Dashboard Section 
+router.get('/users', authAdmin ,(req, res)=>{
+
+    const notice = [];
+    const userData = req.admin;
+
+    res.render('admin-users', {userData , notice})
+})
 
 
 // Admin Section 
@@ -126,12 +143,7 @@ router.delete("/prop/:id", propertyController.deleteProperty);
 
 
 
-// Rent Section 
-router.post("/create/rent", rentController.createRent);
-router.get("/rent/", rentController.getAllRent);
-router.get("/rent/:id", rentController.getRentById);
-router.put("/rent/:id", rentController.updateRent);
-router.delete("/rent/:id", rentController.deleteRent);
+
 
 
 

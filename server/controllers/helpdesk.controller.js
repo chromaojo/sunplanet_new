@@ -59,6 +59,26 @@ exports.getAllMyHelp = async (req, res) => {
 };
 
 // GET A SINGLE HELP DESK TICKET
+exports.getHelpDeskByIdAdmin = async (req, res) => {
+    try {
+        const helpDesk = await HelpDesk.findByPk(req.params.id);
+        if (!helpDesk) return res.status(404).json({ error: "HelpDesk ticket not found" });
+
+        // res.json(helpDesk);
+
+        const help = helpDesk.dataValues
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        const notice = []
+
+        console.log('The detail is ', help)
+        res.render('invest-help1', { userData, notice, help })
+
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// GET A SINGLE HELP DESK TICKET
 exports.getHelpDeskById = async (req, res) => {
     try {
         const helpDesk = await HelpDesk.findByPk(req.params.id);

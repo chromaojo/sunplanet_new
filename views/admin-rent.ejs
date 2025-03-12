@@ -9,7 +9,7 @@
       <div class="col-auto my-auto">
         <div class="h-100">
           <h5 class="mb-1 text-uppercase">
-            Help Desk
+            Rent Application
           </h5>
           <p class="mb-0 font-weight-bold text-sm">
             <%= userData.email %>
@@ -29,7 +29,7 @@
           <div class="d-flex justify-content-between">
             <h6 class="mb-2">
               <img src="/assets/img/icons/flags/nijja.gif" alt="Country flag" width="23px">
-              - Help Desk
+              - Rental Requests
             </h6>
           </div>
         </div>
@@ -37,12 +37,12 @@
           <% counter=1 %>
             <table class="table align-items-center ">
               <tbody>
-                <% helpDesks.forEach(help=> { %>
+                <% rents.forEach(help=> { %>
 
                   <tr>
                     <td class="w-30">
 
-                      <a href="/spco/help-desk/<%= help.id %>">
+                      <a href="/spco/rent/<%= help.id %>">
                         <div class="d-flex px-2 py-1 align-items-center">
                           <div>
                             <%= counter ++ %>
@@ -50,45 +50,42 @@
                                                 alt="Country flag" width="23px"> -->
                           </div>
                           <div class="ms-4">
-                            <p class="text-xs font-weight-bold mb-0">Full Name </p>
+                            <p class="text-xs font-weight-bold mb-0">Property Name </p>
                             <h6 class="text-sm mb-0 text-capitalize">
-                              <%= help.name %>
+                              <%= help.property_name %>
                             </h6>
                           </div>
                         </div>
                       </a>
                     </td>
                     <td>
-                      <a href="/spco/help-desk/<%= help.id %>">
+                      <a href="/spco/rent/<%= help.id %>">
                         <div class="text-center">
-                          <p class="text-xs font-weight-bold mb-0">Title </p>
+                          <p class="text-xs font-weight-bold mb-0"> Property Type </p>
                           <h6 class="text-sm mb-0">
-                            <%= help.title %>
+                            <%= help.property_type %>
                           </h6>
                         </div>
                       </a>
                     </td>
                     <td>
-                      <a href="/spco/help-desk/<%= help.id %>">
+                      <a href="/spco/rent/<%= help.id %>">
                         <div class="text-center">
-                          <p class="text-xs font-weight-bold mb-0">Account Id </p>
+                          <p class="text-xs font-weight-bold mb-0">Occupant Name </p>
                           <h6 class="text-sm mb-0">
-                            <%= help.account_id %>
+                            <%= help.occupant_name %>
                           </h6>
                         </div>
                       </a>
                     </td>
                     <td class="align-middle text-sm">
-                      <a href="/spco/help-desk/<%= help.id %>">
-                        <div class="col text-center">
-                          <p class="text-xs font-weight-bold mb-0"> Date </p>
-                          <h6 class="text-sm mb-0">
-                            <%= new Date(help.date).toLocaleDateString() %>
-                          </h6>
-                        </div>
-                      </a>
+                      <div class="col text-center">
+                        <p class="text-xs font-weight-bold mb-0">Next Of Kin </p>
+                        <h6 class="text-sm mb-0 text-capitalize ">
+                          <%= help.next_of_kin %>
+                        </h6>
+                      </div>
                     </td>
-
                     <td class="align-middle text-sm">
                       <div class="col text-center">
                         <p class="text-xs font-weight-bold mb-0">Status </p>
