@@ -4,6 +4,7 @@ require('dotenv').config();
 
 // Validate environment variables
 if (!process.env.DB_NAME || !process.env.DB_USER || !process.env.DB_PASS || !process.env.DB_HOST) {
+   
     throw new Error("Database environment variables are not properly set.");
 }
 

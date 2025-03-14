@@ -5,19 +5,40 @@ dotenv.config();
 
 
 exports.AvoidIndex = (req, res, next) => {
+    const { tenant, admin, investor } = req.cookies;
 
-    let userData = req.cookies.tenant || req.cookies.admin || req.cookies.investor
-    // const userData = jwt.verify(exp1, process.env.JWT_SECRET);
+    let userData;
+    let userRole = null;
 
+    try {
+        if (tenant) {
+            userData = jwt.verify(tenant, process.env.JWT_SECRET);
+            userRole = 'tenant';
+        } else if (investor) {
+            userData = jwt.verify(investor, process.env.JWT_SECRET);
+            userRole = 'investor';
+        } else if (admin) {
+            userData = jwt.verify(admin, process.env.JWT_SECRET);
+            userRole = 'admin';
+        }
+    } catch (err) {
+        return next(); // Invalid token, proceed normally
+    }
 
     if (userData) {
-        
-        let error = 'You are Currently logged In';
-        return res.render('error', { userData, error })
-
-    } else {
-        return next();
+        switch (userRole) {
+            case 'tenant':
+                return res.redirect('/tnt');
+            case 'investor':
+                return res.redirect('/invst');
+            case 'admin':
+                return res.redirect('/spco');
+            default:
+                return next();
+        }
     }
+
+    return next();
 };
 
 exports.TenantLoggin = (req, res, next) => {
@@ -40,7 +61,7 @@ exports.AdminRole = async (req, res, next) => {
 
     if (userData.acct_type === "admin" || 'staff') {
         return next();
-    } else { 
+    } else {
         res.redirect('/logout')
     }
 };

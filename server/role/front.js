@@ -85,12 +85,16 @@ route.get('/login-admin', AvoidIndex, (req, res) => {
 
 route.get('/login-investor', AvoidIndex, (req, res) => {
 
-    res.sendFile(path.join(__dirname, "../../statics", 'loginInvest.html'));
+    // res.sendFile(path.join(__dirname, "../../statics", 'loginInvest.html'));
+
+    return res.render('loginInvestor', { layout: false })
 })
 // Tenant Login 
 route.get('/login-tenant', AvoidIndex, (req, res) => {
 
-    res.sendFile(path.join(__dirname, "../../statics", 'loginTenant.html'));
+    // res.sendFile(path.join(__dirname, "../../statics", 'loginTenant.html'));
+
+    return res.render('loginTenant', { layout: false })
 })
 
 // Admin Login 
@@ -139,61 +143,10 @@ route.get('/prop', AvoidIndex, (req, res) => {
 
 })
 
-// To get specific properties 
-route.get('/prop/:type', AvoidIndex, (req, res) => {
-    const property_type = req.params.type;
-    const sql = `
-    SELECT * FROM sun_planet.spc_property WHERE property_type = ? ORDER BY id DESC;
-  `;
-    const userCookie = req.cookies.user ? JSON.parse(req.cookies.user) : null;
-
-    db.query(sql, [property_type], (err, results) => {
-        if (err) {
-            console.log('Property Data Issues :', err);
-            return res.status(500).send('Internal Server Error');
-        }
-
-
-        if (results) {
-            const userProp = results
-            const userData = userCookie
-            return res.render('home-prop', { userProp, info, layout: false })
-        }
-
-    })
-
-})
-
-route.get('/props/:id', AvoidIndex, (req, res) => {
-    const id = req.params.id;
-    const sql = `
-    SELECT * FROM sun_planet.spc_property WHERE id = ? ORDER BY id DESC;
-  `;
-    const userCookie = req.cookies.user ? JSON.parse(req.cookies.user) : null;
-
-    db.query(sql, [id], (err, results) => {
-        if (err) {
-            console.log('Login Issues :', err);
-            return res.status(500).send('Internal Server Error');
-        }
-
-
-        if (results) {
-            const userProp = results[0];
-            
-            console.log('The user Prop is ', userProp)
-            return res.render('home-prop-one', { userProp, info, layout: false })
-        }
-
-    })
-
-})
-
 
 // Logout route
 route.get('/logout', (req, res) => {
 
-    delete userCookie
     req.session.destroy((err) => {
         delete userData
         delete userCookie
@@ -201,7 +154,7 @@ route.get('/logout', (req, res) => {
         res.clearCookie('investor');
         res.clearCookie('admin');
         if (err) {
-            console.error(err);
+            console.error("The Error is : ",err); 
             res.status(500).send('Error logging out');
         } else {
             res.redirect('/');

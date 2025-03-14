@@ -36,13 +36,14 @@ const Property = sequelize.define(
         },
         property_type: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: PropertyType, // References PropertyType model
                 key: "prop_type", // Uses prop_type as the key
             },
             onDelete: "SET NULL", // If property type is deleted, keep the property but set type as NULL
         },
+
         action: {
             type: DataTypes.ENUM("for_sale", "for_lease", "shortlet"),
             allowNull: false,
