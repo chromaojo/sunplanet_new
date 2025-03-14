@@ -38,9 +38,9 @@ exports.AdminRole = async (req, res, next) => {
 
     const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
 
-    if (userData.acct_type === "admin") {
+    if (userData.acct_type === "admin" || 'staff') {
         return next();
-    } else {
+    } else { 
         res.redirect('/logout')
     }
 };

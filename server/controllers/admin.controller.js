@@ -104,15 +104,15 @@ exports.createAdmin = async (req, res) => {
 
 // GET ALL ADMINS
 exports.getAllAdmins = async (req, res) => {
-    // const userData = req.cookies.admin ? JSON.parse(req.cookies.admin) : null;
-    const userData = req.cookies.admin;
+
     try {
-        const admins = await Admin.findAll();
+        const users = await Admin.findAll();
        
-        
+         const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
         // res.json(admins);
+        const acct_type = 'Admins';
         const notice = []
-        return res.render('admin-all', {admins, userData, notice })
+        return res.render('admin-users-type', {users, userData, notice, acct_type })
 
        
     } catch (error) {
@@ -127,7 +127,13 @@ exports.getAdminById = async (req, res) => {
         const admin = await Admin.findByPk(req.params.id);
         if (!admin) return res.status(404).json({ error: "Admin not found" });
 
-        res.json(admin);
+        // res.json(admin);
+
+                const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+                const notice = [];
+                const user = admin.dataValues;
+                delete user.password_hash
+                return res.render('admin-users-admin', { user, userData, notice})
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

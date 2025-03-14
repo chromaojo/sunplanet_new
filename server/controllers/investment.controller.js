@@ -141,7 +141,9 @@ exports.deleteInvestment = async (req, res) => {
         if (!investment) return res.status(404).json({ error: "Investment not found" });
 
         await investment.destroy();
-        res.json({ message: "Investment deleted successfully" });
+        // res.json({ message: "Investment deleted successfully" });
+        
+        return res.redirect("/spco/investment");
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

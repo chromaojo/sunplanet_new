@@ -74,7 +74,12 @@ exports.loginInvestor = async (req, res) => {
 exports.getAllInvestors = async (req, res) => {
     try {
         const investors = await Investor.findAll();
-        res.json(investors);
+        // res.json(investors);
+        const notice = [];
+        const users = investors;
+        const acct_type = 'Investors';
+        return res.render('admin-users-type', { users, userData, notice, acct_type })
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -86,7 +91,11 @@ exports.getInvestorById = async (req, res) => {
         const investor = await Investor.findByPk(req.params.id);
         if (!investor) return res.status(404).json({ error: "Investor not found" });
 
-        res.json(investor);
+        // res.json(investor);
+        const notice = [];
+        const user = investor.dataValues;
+        delete user.password_hash
+        return res.render('admin-users-investor', { user, userData, notice, acct_type })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

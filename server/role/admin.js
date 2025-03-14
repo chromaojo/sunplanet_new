@@ -49,7 +49,7 @@ router.post("/investment/", createInvestment);
 
 // Undone 
 router.put("/investment/:id", updateInvestment);
-router.delete("/investment/:id", deleteInvestment);
+router.get("/del/investnt/:id", deleteInvestment);
 
 // Properties Routes
 
@@ -100,12 +100,13 @@ router.get('/users', authAdmin ,(req, res)=>{
 })
 
 
+
 // Admin Section 
 
 // Register new Admin 
 router.post("/admin/", adminController.createAdmin);
 // See all admin 
-router.get("/admin/", adminController.getAllAdmins);
+router.get("/admins/", adminController.getAllAdmins);
 // Get one admin 
 router.get("/admin/:id", adminController.getAdminById);
 router.put("/admin/:id", adminController.updateAdmin);
