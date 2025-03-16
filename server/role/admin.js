@@ -80,13 +80,6 @@ router.put("/rent/:id", rentController.updateRent);
 router.delete("/rent/:id", rentController.deleteRent);
 
 
- 
-
-
-
-
-
-
 
 // User Section 
 
@@ -103,6 +96,14 @@ router.get('/users', authAdmin ,(req, res)=>{
 
 // Admin Section 
 
+
+router.get('/create-staff', authAdmin ,(req, res)=>{
+
+    const notice = [];
+    const userData = req.admin;
+
+    res.render('admin-create-staff', {userData , notice})
+})
 // Register new Admin 
 router.post("/admin/", adminController.createAdmin);
 // See all admin 
@@ -112,7 +113,18 @@ router.get("/admin/:id", adminController.getAdminById);
 router.put("/admin/:id", adminController.updateAdmin);
 router.delete("/admin/:id", adminController.deleteAdmin);
 
+
+
+
 // Investor Routes
+
+router.get('/create-investor', authAdmin ,(req, res)=>{
+
+    const notice = [];
+    const userData = req.admin;
+
+    res.render('admin-create-investor', {userData , notice})
+})
 
 router.post("/investor/", investorController.createInvestor);
 router.get("/investors", investorController.getAllInvestors);
@@ -121,6 +133,14 @@ router.put("/investor/:id", investorController.updateInvestor);
 router.delete("/investor/:id", investorController.deleteInvestor);
 
 // Tenant Section 
+
+router.get('/create-tenant', authAdmin ,(req, res)=>{
+
+    const notice = [];
+    const userData = req.admin;
+
+    res.render('admin-create-tenant', {userData , notice})
+})
 
 router.post("/tenantz/", tenantController.createTenant);
 router.get("/tenantz/", tenantController.getAllTenants);
