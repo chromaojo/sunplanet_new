@@ -1,35 +1,57 @@
-<div class="container mt-5 w-50">
+<div class="container mt-5 ">
     <h2 class="text-center text-light font-weight-bold">Create Investor</h2>
-    
-    <form action="/spco/investor" class="p-4 border rounded bg-light needs-validation" novalidate method="POST">
+
+    <form action="/spco/investor/create-YxXLpP64K" class="p-4 border rounded bg-light needs-validation" novalidate
+        method="POST">
 
         <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter name in full" name="property_name" required>
+            <input type="text" class="form-control" id="name" placeholder="Enter name in full" name="full_name"
+                required>
             <div class="invalid-feedback">Please enter investor's name in the correct order.</div>
         </div>
 
-         <!-- Name Field -->
-         <div class="mb-3">
+        <!-- Name Field -->
+        <div class="mb-3">
             <label for="name" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="name" placeholder="Enter email address" name="property_name" required>
+            <input type="email" class="form-control" id="name" placeholder="Enter email address" name="email" required>
             <div class="invalid-feedback">Please enter email address.</div>
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="name" placeholder="Enter phone number" name="property_name" required>
+            <input type="number" class="form-control" id="name" placeholder="Enter phone number" name="phone" required>
             <div class="invalid-feedback">Please enter a functional phone number.</div>
         </div>
-        <div class="mb-4">
+        <div class="mb-3">
             <label for="name" class="form-label">Whatsapp</label>
-            <input type="number" class="form-control" id="name" placeholder="Enter whatsapp number" name="property_name" required>
+            <input type="number" class="form-control" id="name" placeholder="Enter whatsapp number" name="whatsapp"
+                required>
             <div class="invalid-feedback">Please enter investor's whatsapp number</div>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Bank Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name of bank" name="bank_name"
+                required>
+            <div class="invalid-feedback">Please enter inverstor's bank.</div>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Account Holder's Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name on the account"
+                name="bank_acct_name" required>
+            <div class="invalid-feedback">Please enter the name on the bank account.</div>
+        </div>
+        <div class="mb-3">
+
+            <label for="name" class="form-label">Bank Account Number</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter account number" name="bank_acct"
+                required>
+            <div class="invalid-feedback">Please enter bank account number.</div>
         </div>
 
 
         <div class="text-center">
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary w-50">Submit</button>
+            <button type="submit" class="btn btn-primary w-50 mt-4">Create Account</button>
         </div>
 
     </form>

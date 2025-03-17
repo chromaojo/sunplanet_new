@@ -44,7 +44,7 @@ app.use('/invst', InvestorRole, require('./server/role/investor'));
 
 app.all("*", (req, res)=>{
     res.send("This page is not accesible to you")
-})
+}) 
 
 // Sync Database and Start Server { alter : true }
 sequelize.sync().then(() => {

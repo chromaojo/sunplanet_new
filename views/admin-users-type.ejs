@@ -33,101 +33,106 @@
             </h6>
           </div>
         </div>
-        <div class="table-responsive">
+        <% if (users.length === 0) { %>
+          <h3 class="text-center p-4 text-capitalize">This user section is empty</h3>
+          <% } else { %>
+           
+            <div class="table-responsive">
 
-          <% counter=1 %>
-            <table class="table align-items-center ">
-              <tbody class="m-auto " style="max-height: 70vh;">
-                <% users.forEach(user=> { %>
-                  <tr>
-                    <td class="w-30">
-                      <% if (acct_type==='Admins' ) { %>
-                        <a href="/spco/admin/<%= user.id %>">
-
-                          <% } else if (acct_type==='Tenants' ) { %>
-                            <a href="/spco/tenantz/<%= user.id %>">
-                              <% } else { %>
-                                <a href="/spco/investor/<%= user.id %>">
-                                  <% } %>
-
-                                    <div class="d-flex px-2 py-1 align-items-center">
-                                      <div>
-                                        <%= counter ++ %>
-                                          <!-- <img src="../assets/img/icons/flags/nijja.gif"
-                                                alt="Country flag" width="23px"> -->
-                                      </div>
-                                      <div class="ms-4">
-                                        <p class="text-xs font-weight-bold mb-0">Full Name </p>
-                                        <h6 class="text-sm mb-0 text-capitalize">
-                                          <%= user.full_name %>
-                                        </h6>
-                                      </div>
-                                    </div>
-                                </a>
-                    </td>
-                    <td>
-                      <% if (acct_type==='Admins' ) { %>
-                        <a href="/spco/admin/<%= user.id %>">
-
-                          <% } else if (acct_type==='Tenants' ) { %>
-                            <a href="/spco/tenantz/<%= user.id %>">
-                              <% } else { %>
-                                <a href="/spco/investor/<%= user.id %>">
-                                  <% } %>
-
-                                    <div class="text-center">
-                                      <p class="text-xs font-weight-bold mb-0">Email </p>
-                                      <h6 class="text-sm mb-0">
-                                        <%= user.email %>
-                                      </h6>
-                                    </div>
-                                </a>
-                    </td>
-                    <td>
-                      <% if (acct_type==='Admins' ) { %>
-                        <a href="/spco/admin/<%= user.id %>">
-
-                          <% } else if (acct_type==='Tenants' ) { %>
-                            <a href="/spco/tenantz/<%= user.id %>">
-                              <% } else { %>
-                                <a href="/spco/investor/<%= user.id %>">
-                                  <% } %>
-
-                                    <div class="text-center">
-                                      <p class="text-xs font-weight-bold mb-0">Phone Number</p>
-                                      <h6 class="text-sm mb-0">
-                                        <%= user.phone %>
-                                      </h6>
-                                    </div>
-                                </a>
-                    </td>
-                    <td class="align-middle text-sm">
-                      <% if (acct_type==='Admins' ) { %>
-                        <a href="/spco/admin/<%= user.id %>">
-
-                          <% } else if (acct_type==='Tenants' ) { %>
-                            <a href="/spco/tenantz/<%= user.id %>">
-                              <% } else { %>
-                                <a href="/spco/investor/<%= user.id %>">
-                                  <% } %>
-                                    <div class="col text-center">
-                                      <p class="text-xs font-weight-bold mb-0"> Created Date </p>
-                                      <h6 class="text-sm mb-0">
-                                        <%= user.created_at ? new Date(user.created_at).toLocaleDateString()
-                                          : "Invalid Date" %>
-                                      </h6>
-                                    </div>
-                                </a>
-                    </td>
-
-                  </tr>
-
-                  <% }); %>
-
-
-              </tbody>
-            </table>
-        </div>
+              <% counter=1 %>
+                <table class="table align-items-center ">
+                  <tbody class="m-auto " style="max-height: 70vh;">
+                    <% users.forEach(user=> { %>
+                      <tr>
+                        <td class="w-30">
+                          <% if (acct_type==='Admins' ) { %>
+                            <a href="/spco/admin/<%= user.id %>">
+    
+                              <% } else if (acct_type==='Tenants' ) { %>
+                                <a href="/spco/tenantz/<%= user.id %>">
+                                  <% } else { %>
+                                    <a href="/spco/investor/<%= user.id %>">
+                                      <% } %>
+    
+                                        <div class="d-flex px-2 py-1 align-items-center">
+                                          <div>
+                                            <%= counter ++ %>
+                                              <!-- <img src="../assets/img/icons/flags/nijja.gif"
+                                                    alt="Country flag" width="23px"> -->
+                                          </div>
+                                          <div class="ms-4">
+                                            <p class="text-xs font-weight-bold mb-0">Full Name </p>
+                                            <h6 class="text-sm mb-0 text-capitalize">
+                                              <%= user.full_name %>
+                                            </h6>
+                                          </div>
+                                        </div>
+                                    </a>
+                        </td>
+                        <td>
+                          <% if (acct_type==='Admins' ) { %>
+                            <a href="/spco/admin/<%= user.id %>">
+    
+                              <% } else if (acct_type==='Tenants' ) { %>
+                                <a href="/spco/tenantz/<%= user.id %>">
+                                  <% } else { %>
+                                    <a href="/spco/investor/<%= user.id %>">
+                                      <% } %>
+    
+                                        <div class="text-center">
+                                          <p class="text-xs font-weight-bold mb-0">Email </p>
+                                          <h6 class="text-sm mb-0">
+                                            <%= user.email %>
+                                          </h6>
+                                        </div>
+                                    </a>
+                        </td>
+                        <td>
+                          <% if (acct_type==='Admins' ) { %>
+                            <a href="/spco/admin/<%= user.id %>">
+    
+                              <% } else if (acct_type==='Tenants' ) { %>
+                                <a href="/spco/tenantz/<%= user.id %>">
+                                  <% } else { %>
+                                    <a href="/spco/investor/<%= user.id %>">
+                                      <% } %>
+    
+                                        <div class="text-center">
+                                          <p class="text-xs font-weight-bold mb-0">Phone Number</p>
+                                          <h6 class="text-sm mb-0">
+                                            <%= user.phone %>
+                                          </h6>
+                                        </div>
+                                    </a>
+                        </td>
+                        <td class="align-middle text-sm">
+                          <% if (acct_type==='Admins' ) { %>
+                            <a href="/spco/admin/<%= user.id %>">
+    
+                              <% } else if (acct_type==='Tenants' ) { %>
+                                <a href="/spco/tenantz/<%= user.id %>">
+                                  <% } else { %>
+                                    <a href="/spco/investor/<%= user.id %>">
+                                      <% } %>
+                                        <div class="col text-center">
+                                          <p class="text-xs font-weight-bold mb-0"> Created Date </p>
+                                          <h6 class="text-sm mb-0">
+                                            <%= user.created_at ? new Date(user.created_at).toLocaleDateString()
+                                              : "Invalid Date" %>
+                                          </h6>
+                                        </div>
+                                    </a>
+                        </td>
+    
+                      </tr>
+    
+                      <% }); %>
+    
+    
+                  </tbody>
+                </table>
+            </div>
+        <% } %>
       </div>
     </div>
   </div>

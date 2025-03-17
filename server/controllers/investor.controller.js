@@ -8,23 +8,22 @@ const { v4: uuidv4 } = require("uuid");
 // CREATE AN INVESTOR
 exports.createInvestor = async (req, res) => {
     try {
-        const { full_name, email, phone, password, about, investment_amount } = req.body;
+        const { full_name, email, phone, about, investment_amount , bank_acct, whatsapp , bank_name , bank_acct_name } = req.body;
+        console.log(" The detail is ",full_name, ". Whatsapp :",phone)
 
         // Hash password
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(phone, 10);
 
         const newInvestor = await Investor.create({
             investor_id: uuidv4(),
-            full_name,
-            email,
-            phone,
+            full_name, email, phone,
             password_hash: hashedPassword,
-            about,
-            investment_amount,
+            bank_acct, whatsapp , bank_name , bank_acct_name
         });
-
-        res.status(201).json({ message: "Investor created successfully", investor: newInvestor });
+        console.log("The detail os funny ",newInvestor)
+        res.redirect('/spco/investors')
     } catch (error) {
+        console.error('The error is ', error)
         res.status(500).json({ error: error.message });
     }
 };
@@ -78,6 +77,7 @@ exports.getAllInvestors = async (req, res) => {
         const notice = [];
         const users = investors;
         const acct_type = 'Investors';
+         const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
         return res.render('admin-users-type', { users, userData, notice, acct_type })
 
     } catch (error) {

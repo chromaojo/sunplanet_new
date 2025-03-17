@@ -126,7 +126,7 @@ router.get('/create-investor', authAdmin ,(req, res)=>{
     res.render('admin-create-investor', {userData , notice})
 })
 
-router.post("/investor/", investorController.createInvestor);
+router.post("/investor/create-YxXLpP64K", investorController.createInvestor);
 router.get("/investors", investorController.getAllInvestors);
 router.get("/investor/:id", investorController.getInvestorById);
 router.put("/investor/:id", investorController.updateInvestor);
@@ -142,7 +142,7 @@ router.get('/create-tenant', authAdmin ,(req, res)=>{
     res.render('admin-create-tenant', {userData , notice})
 })
 
-router.post("/tenantz/", tenantController.createTenant);
+router.post("/tenantz/create", tenantController.createTenant);
 router.get("/tenantz/", tenantController.getAllTenants);
 router.get("/tenantz/:id", tenantController.getTenantById);
 router.put("/tenantz/:id", tenantController.updateTenant);

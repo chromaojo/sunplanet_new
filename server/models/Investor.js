@@ -18,15 +18,15 @@ const Investor = sequelize.define("Investor", {
     },
     bank_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     bank_acct_name: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     bank_acct: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     email: {
         type: DataTypes.STRING,
