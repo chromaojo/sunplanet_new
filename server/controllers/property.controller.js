@@ -28,6 +28,36 @@ exports.getAllProperties = async (req, res) => {
     }
 };
 
+
+// GET ALL PROPERTIES
+exports.getAllProperties = async (req, res) => {
+    try {
+        const properties = await Property.findAll();
+        // res.json(properties);
+
+        const userData = jwt.verify(req.cookies.tenant, process.env.JWT_SECRET);
+        const notice = []
+
+        res.render('tenant-prop', { userData, notice, properties })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// GET ALL PROPERTIES
+exports.getAllFrontProp = async (req, res) => {
+    try {
+        const properties = await Property.findAll({
+            order: [['id', 'DESC']]
+        });
+
+        res.render('home-prop', { properties, layout: false });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+
 // GET PROPERTY BY ID
 exports.getPropertyById = async (req, res) => {
     try {

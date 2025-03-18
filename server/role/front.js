@@ -14,7 +14,7 @@ const { regNew, regSamp } = require('../module/accounts');
 const {loginAdmin , logoutAdmin} = require('../controllers/admin.controller')
 const {loginTenant, } = require('../controllers/tenant.controller');
 const {loginInvestor} = require('../controllers/investor.controller');
-const {getAllProperties , getPropertyById } = require('../controllers/property.controller')
+const {getAllProperties , getPropertyById, getAllFrontProp } = require('../controllers/property.controller')
 require('dotenv').config();
 
 
@@ -108,40 +108,11 @@ route.post('/KjXxXYtF/login', loginInvestor)
 route.post('/tTxDiIOzXlO/login', loginTenant)
 
 
-
-
-
-
-
-
-
-
-
-
 // Properties Section 
 
 // To get All property 
-route.get('/prop', AvoidIndex, (req, res) => {
-    const property_type = req.params.type;
-    const sql = `SELECT * FROM sun_planet.spc_property ORDER BY id DESC;`;
-    const userCookie = req.cookies.user ? JSON.parse(req.cookies.user) : null;
+route.get('/properties', getAllFrontProp)
 
-    db.query(sql, [property_type], (err, results) => {
-        if (err) {
-            console.log('Login Issues :', err);
-            return res.status(500).send('Internal Server Error');
-        }
-
-
-        if (results) {
-            const userProp = results
-            const userData = userCookie
-            return res.render('home-prop', { userProp, info, layout: false })
-        }
-
-    })
-
-})
 
 
 // Logout route

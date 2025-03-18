@@ -43,7 +43,10 @@ app.use('/invst', InvestorRole, require('./server/role/investor'));
  
 
 app.all("*", (req, res)=>{
-    res.send("This page is not accesible to you")
+    
+    const error = "You are not authorized to access this page";
+    
+    return res.render('error-home', {error , layout: false })
 }) 
 
 // Sync Database and Start Server { alter : true }
