@@ -23,13 +23,7 @@ router.get('', authenticateInvestor,(req, res)=>{
 
 
 // Protected route example: Get Investor Profile
-router.get("/profile", authenticateInvestor, (req, res) => {
-    const userData = req.investor;
-    const notice = []
-    console.log("The user Data is ",userData)
-    res.render('invest-profile', {userData , notice})
-    // res.json({ investor: req.investor });
-});
+
 router.get("/profile-edit", authenticateInvestor, (req, res) => {
     const userData = req.investor;
     const notice = []

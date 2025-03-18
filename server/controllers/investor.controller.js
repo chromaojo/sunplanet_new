@@ -9,8 +9,7 @@ const { v4: uuidv4 } = require("uuid");
 exports.createInvestor = async (req, res) => {
     try {
         const { full_name, email, phone, about, investment_amount , bank_acct, whatsapp , bank_name , bank_acct_name } = req.body;
-        console.log(" The detail is ",full_name, ". Whatsapp :",phone)
-
+        
         // Hash password
         const hashedPassword = await bcrypt.hash(phone, 10);
 
@@ -20,7 +19,6 @@ exports.createInvestor = async (req, res) => {
             password_hash: hashedPassword,
             bank_acct, whatsapp , bank_name , bank_acct_name
         });
-        console.log("The detail os funny ",newInvestor)
         res.redirect('/spco/investors')
     } catch (error) {
         console.error('The error is ', error)
@@ -77,7 +75,7 @@ exports.getAllInvestors = async (req, res) => {
         const notice = [];
         const users = investors;
         const acct_type = 'Investors';
-         const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
         return res.render('admin-users-type', { users, userData, notice, acct_type })
 
     } catch (error) {
@@ -94,7 +92,9 @@ exports.getInvestorById = async (req, res) => {
         // res.json(investor);
         const notice = [];
         const user = investor.dataValues;
-        delete user.password_hash
+        const acct_type = 'Investor'
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        delete user.password_hash;
         return res.render('admin-users-investor', { user, userData, notice, acct_type })
     } catch (error) {
         res.status(500).json({ error: error.message });

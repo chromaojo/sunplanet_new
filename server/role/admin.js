@@ -30,6 +30,25 @@ router.get('/', authAdmin ,(req, res)=>{
 })
 
 
+router.get("/profile", authAdmin, (req, res) => {
+    const userData = req.admin;
+    const notice = []
+    console.log("The user Data is ",userData)
+    res.render('admin-profile1', {userData , notice})
+    // res.json({ investor: req.investor });
+});
+
+
+router.get("/profile-edit", authAdmin, (req, res) => {
+    const userData = req.admin;
+    const notice = []
+    console.log("The user Data is ",userData)
+    res.render('admin-profile1', {userData , notice})
+    // res.json({ investor: req.investor });
+});
+
+
+
 
 // Investment section 
 
@@ -53,7 +72,7 @@ router.get("/del/investnt/:id", deleteInvestment);
 
 // Properties Routes
 
-router.post("/props/", propertyController.createProperty);
+router.post("/props/create", propertyController.createProperty);
 router.get("/props/", propertyController.getAllPropertiesAdmin);
 router.get("/props/:id", propertyController.getPropertyByIdAdmin);
 
@@ -92,10 +111,7 @@ router.get('/users', authAdmin ,(req, res)=>{
     res.render('admin-users', {userData , notice})
 })
 
-
-
 // Admin Section 
-
 
 router.get('/create-staff', authAdmin ,(req, res)=>{
 
@@ -105,7 +121,7 @@ router.get('/create-staff', authAdmin ,(req, res)=>{
     res.render('admin-create-staff', {userData , notice})
 })
 // Register new Admin 
-router.post("/admin/", adminController.createAdmin);
+router.post("/admin/create", adminController.createAdmin);
 // See all admin 
 router.get("/admins/", adminController.getAllAdmins);
 // Get one admin 

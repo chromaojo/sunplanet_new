@@ -80,13 +80,9 @@ exports.getAdminProfile = async (req, res) => {
 // CREATE ADMIN
 exports.createAdmin = async (req, res) => {
     try {
-        const { full_name, email, phone, password, password1, role } = req.body;
-        if (password != password1){
-            console.log("Password not the same");
-            res.json({error : "Password not matching"})
+        const { full_name, email, phone, role } = req.body;
 
-        }
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(phone, 10);
 
         const newAdmin = await Admin.create({
             full_name,
@@ -96,7 +92,8 @@ exports.createAdmin = async (req, res) => {
             role,
         });
         
-        res.status(201).json({ message: "Admin created successfully", admin: newAdmin });
+        // res.status(201).json({ message: "Admin created successfully", admin: newAdmin });
+        res.redirect('/spco/admins')
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

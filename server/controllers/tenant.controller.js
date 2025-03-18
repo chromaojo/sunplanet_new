@@ -7,9 +7,18 @@ const { v4: uuidv4 } = require("uuid");
 
 // CREATE A TENANT
 exports.createTenant = async (req, res) => {
+    const { full_name, email, phone, about, address , whatsapp } = req.body;
     try {
-        const tenant = await Tenant.create(req.body);
-        res.status(201).json({ message: "Tenant created successfully", tenant });
+        
+        const hashedPassword = await bcrypt.hash(phone, 10);
+
+        const tenant = await Tenant.create({
+            tenant_id: uuidv4(),
+            full_name, email, phone,
+            password_hash: hashedPassword, address, whatsapp , about
+        });
+        // res.status(201).json({ message: "Tenant created successfully", tenant });
+        res.redirect("/spco/tenantz")
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

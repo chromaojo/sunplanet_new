@@ -29,76 +29,127 @@
           <h6>Investor Details </h6>
         </div>
         <div class="card-body px-3 pt-2 pb-2">
-          <div class="d-flex px-2 py-1 mb-3">
-            <div>
-              <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Full Name</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.full_name %>
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Bank Name</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.bank_name %>
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Bank Account Name</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.bank_acct_name %>
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Bank Account Number :</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.bank_acct %>
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Whatsapp</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.whatsapp %>
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="d-flex flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Full Name</h6>
-              <p class="text-xs text-secondary mb-0 text-uppercase">
-                <%= user.full_name %>
-              </p>
-            </div>
+            <div class="col-md-6">
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Address</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.address ? user.address : "Address is Emppty" %>
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">About </h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.about ? user.about : "The about is empty" %>
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Investor Balance</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.investor_total %> NGN
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Tenant Total Spent</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.total_spent %> NGN
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex px-2 py-1 mb-3">
+                <div>
+                  <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                  <h6 class="mb-0 text-sm">Created On</h6>
+                  <p class="text-xs text-secondary mb-0 text-uppercase">
+                    <%= user.created_at ? user.created_at : 'The user account date is invalid' %>
+                  </p>
+                </div>
+              </div>
+             </div>
           </div>
-          <div class="d-flex px-2 py-1 mb-3">
-            <div>
-              <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Whatsapp</h6>
-              <p class="text-xs text-secondary mb-0 text-uppercase">
-                <%= user.whatsapp %>
-              </p>
-            </div>
-          </div>
-          <div class="d-flex px-2 py-1 mb-3">
-            <div>
-              <img src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Address</h6>
-              <p class="text-xs text-secondary mb-0 text-uppercase">
-                <%= user.address %>
-              </p>
-            </div>
-          </div>
-          <div class="d-flex px-2 py-1 mb-3">
-            <div>
-              <img  src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Tenant Balance</h6>
-              <p class="text-xs text-secondary mb-0 text-uppercase">
-                <%= user.tenant_balance %> NGN
-              </p>
-            </div>
-          </div>
-          <div class="d-flex px-2 py-1 mb-3">
-            <div>
-              <img  src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Tenant Total Spent</h6>
-              <p class="text-xs text-secondary mb-0 text-uppercase">
-                <%= user.total_spent %> NGN
-              </p>
-            </div>
-          </div>
+
          
-          <div class="d-flex px-2 py-1 mb-3">
-            <div>
-              <img  src="/assets/img/curved-images/curved4.jpg" class="avatar avatar-sm me-3" alt="user1">
-            </div>
-            <div class="d-flex flex-column justify-content-center">
-              <h6 class="mb-0 text-sm">Created On</h6>
-              <p class="text-xs text-secondary mb-0 text-uppercase">
-                <%= user.created_at ? user.created_at : 'The user account date is invalid' %>
-              </p>
-            </div>
-          </div>
+         
         </div>
       </div>
     </div>
   </div>
 </div>
-
