@@ -29,20 +29,12 @@ router.get('/', authAdmin ,(req, res)=>{
     res.render('admin-dash', {userData , notice})
 })
 
+// Admin Profile 
 
 router.get("/profile", authAdmin, (req, res) => {
     const userData = req.admin;
-    const notice = []
-    console.log("The user Data is ",userData)
-    res.render('admin-profile1', {userData , notice})
-    // res.json({ investor: req.investor });
-});
+    const notice = [];
 
-
-router.get("/profile-edit", authAdmin, (req, res) => {
-    const userData = req.admin;
-    const notice = []
-    console.log("The user Data is ",userData)
     res.render('admin-profile1', {userData , notice})
     // res.json({ investor: req.investor });
 });
@@ -71,6 +63,13 @@ router.put("/investment/:id", updateInvestment);
 router.get("/del/investnt/:id", deleteInvestment);
 
 // Properties Routes
+router.get('/create-property', authAdmin ,(req, res)=>{
+
+    const notice = [];
+    const userData = req.admin;
+
+    res.render('admin-prop-form', {userData , notice})
+})
 
 router.post("/props/create", propertyController.createProperty);
 router.get("/props/", propertyController.getAllPropertiesAdmin);

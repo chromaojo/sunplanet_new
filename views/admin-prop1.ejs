@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
         <div class="card">
-          <div class="card-body p-3">
+          <div class="card-body p-4">
             <div class="row">
               <div class="col-12">
                 <div class="numbers">
@@ -38,23 +38,29 @@
                         <span class="text-success text-sm font-weight-bolder">Info : </span>
                         <%= property.description %>
                       </p>
+                      <b class="text-capitalize">
+                        Status :  <%= property.lease_status %> 
+                       </b> <br>
+                       <p class="mb-3 mt-3 text-capitalize">
+                         <b>
+                           <span class="text-success text-sm font-weight-bolder">Bedroom(s)</span>
+                         <%=property.bedrooms %> unit(s)
+                         </b>
+                       </p>
+                       <p class="mb-3 text-capitalize">
+                         <span class="text-success text-sm font-weight-bolder">Bathroom(s)</span>
+                         <%=property.bathrooms %> unit(s)
+                       </p>
                       
                     </div>
                     <div class="col-md-6 p-2">
-                      <b class="text-capitalize">
-                       Status :  <%= property.lease_status %> 
-                      </b> <br>
-                      <p class="mb-3 mt-3 text-capitalize">
-                        <b>
-                          <span class="text-success text-sm font-weight-bolder">Bedroom(s)</span>
-                        <%=property.bedrooms %> unit(s)
+                      <p class="mb-4 text-center">
+                        <b class="p-4">
+                          Check Property On Map
                         </b>
                       </p>
-                      <p class="mb-3 text-capitalize">
-                        <span class="text-success text-sm font-weight-bolder">Bathroom(s)</span>
-                        <%=property.bathrooms %> unit(s)
-                      </p>
-                      <a href="/spco/rent-apply/<%= property.id %>" class="btn btn-primary mt-3">Apply Now</a>
+                      <iframe width="500vh" height="400" src="<%= iframeSrc %>"></iframe><br>
+                    
                     </div>
                   </div>
 

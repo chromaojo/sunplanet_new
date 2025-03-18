@@ -37,8 +37,13 @@ exports.getPropertyById = async (req, res) => {
         // res.json(property);
         const property = properties.dataValues
         const userData = jwt.verify(req.cookies.tenant, process.env.JWT_SECRET);
+        const myAddress = property.address+ ", "+ property.city+ ", "+property.state +", "+property.country ;
+
+        const encodedAddress = encodeURIComponent(myAddress);
+        const iframeSrc = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+
         const notice = []
-        res.render('tenant-prop1', { userData, notice, property })
+        res.render('tenant-prop1', { userData, notice, property , iframeSrc })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -68,8 +73,13 @@ exports.getPropertyByIdAdmin = async (req, res) => {
         // res.json(property);
         const property = properties.dataValues
         const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+        const myAddress = property.address+ ", "+ property.city+ ", "+property.state +", "+property.country ;
+
+        const encodedAddress = encodeURIComponent(myAddress);
+        const iframeSrc = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+
         const notice = []
-        res.render('admin-prop1', { userData, notice, property })
+        res.render('admin-prop1', { userData, notice, property, iframeSrc })
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
