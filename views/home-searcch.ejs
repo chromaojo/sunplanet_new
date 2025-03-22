@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+        <a href="/properties">Back to Properties</a>
+    </header>
+
+    <% if (properties.length > 0) { %>
+        <section class="property-list">
+            <% properties.forEach(property => { %>
+                <div class="property-card">
+                    <h2><%= property.property_name %></h2>
+                    <p><%= property.description %></p>
+                    <a href="/property/<%= property.id %>">View Details</a>
+                </div>
+            <% }); %>
+        </section>
+    <% } else { %>
+        <p>No properties found.</p>
+    <% } %>
+
+</body>
+</html>

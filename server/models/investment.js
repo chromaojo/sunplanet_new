@@ -14,6 +14,10 @@ const Investment = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        picture: {
+            type: DataTypes.STRING,
+            allowNull: true, 
+        },
         details: {
             type: DataTypes.TEXT,
             allowNull: false,

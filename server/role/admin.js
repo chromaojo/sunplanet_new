@@ -1,6 +1,7 @@
 const express = require("express");
 const propertyController = require("../controllers/property.controller");
 const router = express.Router();
+const propertyTypeController = require("../controllers/propertyType.controller");
 const rentController = require("../controllers/rent.controller");
 const adminController = require("../controllers/admin.controller");
 const helpDeskController = require("../controllers/helpdesk.controller");
@@ -17,6 +18,11 @@ const {
     getAllAdminInvest,
     getInvestmentByIdAd
 } = require("../controllers/investment.controller");
+
+
+
+
+
 
 
 
@@ -61,6 +67,15 @@ router.post("/investment/", createInvestment);
 // Undone 
 router.put("/investment/:id", updateInvestment);
 router.get("/del/investnt/:id", deleteInvestment);
+
+
+
+// Property Type section 
+
+
+// CRUD Routes
+router.post("/property/type", propertyTypeController.createPropertyType);
+router.get("/property/type", propertyTypeController.getAllPropertyTypes);
 
 // Properties Routes
 router.get('/create-property', authAdmin ,(req, res)=>{

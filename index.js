@@ -43,7 +43,7 @@ app.use('/invst', InvestorRole, require('./server/role/investor'));
  
 
 app.all("*", (req, res)=>{
-    
+
     const error = "You are not authorized to access this page";
     
     return res.render('error-home', {error , layout: false })

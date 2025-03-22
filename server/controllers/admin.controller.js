@@ -14,11 +14,13 @@ exports.loginAdmin = async (req, res) => {
         const { email, password } = req.body;
         // Check if admin exists
         const admore = await Admin.findOne({ where: { email } });
-        const admin = admore.dataValues
-        if (!admore) {
-            return res.status(404).json({ error: "Admin not found" });
-        }
         
+        if (!admore) {
+            const error = "Admin account not found"
+            // return res.status(404).json({ error: "Admin not found" });
+            return res.render('error-home',{error, layout: false})
+        }
+        const admin = admore.dataValues
 
        
         // Check password
@@ -31,9 +33,7 @@ exports.loginAdmin = async (req, res) => {
         
         delete admin.password_hash
         admin.acct_type = "admin";
-        
-        console.log("The Admin is ", admin)
-        
+                
         // Generate JWT Token
         const token = jwt.sign(admin, process.env.JWT_SECRET, {
             expiresIn: "7d",

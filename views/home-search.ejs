@@ -77,13 +77,13 @@
               <div class="border p-4">
                 <form action="/search/prop" method="POST">
                   <div class="d-flex">
-                  <input type="text" class="form-control" placeholder="Search Property" name="query">
-                  <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </div>
+                    <input type="text" class="form-control" placeholder="Search Property" name="query">
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                  </div>
                 </form>
-                
+
               </div>
 
             </div>
@@ -107,9 +107,9 @@
         <% if (properties.length> 0) { %>
           <div class="row gy-4">
             <% properties.forEach(props=> { %>
-              <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-xl-4 col-md-6">
                 <div class="card">
-                  <img src="assets1/img/properties/property-1.jpg" alt="" class="img-fluid">
+                  <img src="/assets1/img/properties/property-1.jpg" alt="" class="img-fluid">
                   <div class="card-body">
                     <span class="sale-rent text-capitalize">
                       <%= props.property_type %> | ₦ <%= Number (props.rent_price).toLocaleString() %>
@@ -145,8 +145,9 @@
               <% }); %>
 
           </div>
+
           <% } else { %>
-            <h3 class="card p-4 text-center text-capitalize">There is no property in this category</h3>
+            <h3 class="card p-4 text-center text-capitalize">There is no property with such keyword</h3>
             <% } %>
 
       </div>
@@ -243,14 +244,14 @@
   <!-- <div id="preloader"></div> -->
 
   <!-- Vendor JS Files -->
-  <script src="assets1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets1/vendor/php-email-form/validate.js"></script>
-  <script src="assets1/vendor/aos/aos.js"></script>
-  <script src="assets1/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets1/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/assets1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets1/vendor/php-email-form/validate.js"></script>
+  <script src="/assets1/vendor/aos/aos.js"></script>
+  <script src="/assets1/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets1/vendor/purecounter/purecounter_vanilla.js"></script>
 
   <!-- Main JS File -->
-  <script src="assets1/js/main.js"></script>
+  <script src="/assets1/js/main.js"></script>
 
 </body>
 

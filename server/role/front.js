@@ -14,7 +14,7 @@ const { regNew, regSamp } = require('../module/accounts');
 const {loginAdmin , logoutAdmin} = require('../controllers/admin.controller')
 const {loginTenant, } = require('../controllers/tenant.controller');
 const {loginInvestor} = require('../controllers/investor.controller');
-const {getAllProperties , getPropertyById, getAllFrontProp } = require('../controllers/property.controller')
+const { getAllFrontProp, searchProperty } = require('../controllers/property.controller')
 require('dotenv').config();
 
 
@@ -111,7 +111,10 @@ route.post('/tTxDiIOzXlO/login', loginTenant)
 // Properties Section 
 
 // To get All property 
-route.get('/properties', getAllFrontProp)
+route.get('/properties', AvoidIndex, getAllFrontProp)
+
+// To search Property 
+route.post('/search/prop', AvoidIndex, searchProperty)
 
 
 

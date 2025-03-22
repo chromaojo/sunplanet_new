@@ -55,16 +55,19 @@ exports.TenantLoggin = (req, res, next) => {
 };
 
 exports.AdminRole = async (req, res, next) => {
+    try {
+        const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
 
-
-    const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
-
-    if (userData.acct_type === "admin" || 'staff') {
-        return next();
-    } else {
-        res.redirect('/logout')
+        if (userData.acct_type === "admin" || userData.acct_type === "staff") {
+            return next();
+        } else {
+            return res.redirect('/logout');
+        }
+    } catch (error) {
+        return res.redirect('/logout'); // Handle token verification failure
     }
 };
+
 
 
 exports.InvestorRole = async (req, res, next) => {

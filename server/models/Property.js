@@ -16,6 +16,7 @@ const Property = sequelize.define(
         },
         youtube: {
             type: DataTypes.STRING,
+            allowNull: true,
         },
         address: {
             type: DataTypes.STRING,
@@ -33,6 +34,7 @@ const Property = sequelize.define(
         },
         postal_code: {
             type: DataTypes.STRING,
+            allowNull: true,
         },
         property_type: {
             type: DataTypes.STRING,
