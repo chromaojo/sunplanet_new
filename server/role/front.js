@@ -14,7 +14,7 @@ const { regNew, regSamp } = require('../module/accounts');
 const {loginAdmin , logoutAdmin} = require('../controllers/admin.controller')
 const {loginTenant, } = require('../controllers/tenant.controller');
 const {loginInvestor} = require('../controllers/investor.controller');
-const { getAllFrontProp, searchProperty } = require('../controllers/property.controller')
+const { getAllFrontProp, searchProperty, getAllLeaseFrontProp, getAllSalesFrontProp , getAllShortFrontProp } = require('../controllers/property.controller')
 require('dotenv').config();
 
 
@@ -94,27 +94,37 @@ route.get('/login-tenant', AvoidIndex, (req, res) => {
 
     // res.sendFile(path.join(__dirname, "../../statics", 'loginTenant.html'));
 
-    return res.render('loginTenant', { layout: false })
+    return res.render('loginTenant', { layout: false });
 })
 
 // Admin Login 
-route.post('/PxXUlLiKT/login', loginAdmin)
+route.post('/PxXUlLiKT/login', loginAdmin);
 // Tenant Login 
 
 // Investor Login 
-route.post('/KjXxXYtF/login', loginInvestor)
+route.post('/KjXxXYtF/login', loginInvestor);
 
 // Tenant Login 
-route.post('/tTxDiIOzXlO/login', loginTenant)
+route.post('/tTxDiIOzXlO/login', loginTenant);
 
 
 // Properties Section 
 
 // To get All property 
-route.get('/properties', AvoidIndex, getAllFrontProp)
+route.get('/properties', AvoidIndex, getAllFrontProp);
 
 // To search Property 
-route.post('/search/prop', AvoidIndex, searchProperty)
+route.post('/search/prop', AvoidIndex, searchProperty);
+
+// To search properties for sale 
+// To search Property 
+route.get('/search/lease', AvoidIndex, getAllLeaseFrontProp);
+
+route.get('/search/for-sale', AvoidIndex, getAllSalesFrontProp);
+
+
+route.get('/search/shortlet', AvoidIndex, getAllShortFrontProp);
+
 
 
 

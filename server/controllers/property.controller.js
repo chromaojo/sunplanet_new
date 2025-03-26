@@ -82,16 +82,35 @@ exports.getAllProperties = async (req, res) => {
 };
 
 
-// GET ALL PROPERTIES
-exports.getAllProperties = async (req, res) => {
+exports.getAllSalesFrontProp = async (req, res) => {
     try {
-        const properties = await Property.findAll();
-        // res.json(properties);
-
-        const userData = jwt.verify(req.cookies.tenant, process.env.JWT_SECRET);
-        const notice = []
-
-        res.render('tenant-prop', { userData, notice, properties })
+        const properties = await Property.findAll({
+            order: [['id', 'DESC']],
+            where : {action : 'for_sale'}
+        });
+        res.render('home-search', { properties, layout: false });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+exports.getAllLeaseFrontProp = async (req, res) => {
+    try {
+        const properties = await Property.findAll({
+            order: [['id', 'DESC']],
+            where :{ action : 'for_lease'}
+        });
+        res.render('home-search', { properties, layout: false });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+exports.getAllShortFrontProp = async (req, res) => {
+    try {
+        const properties = await Property.findAll({
+            order: [['id', 'DESC']],
+            where : {action : 'shortlet'}
+        });
+        res.render('home-prop', { properties, layout: false });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -196,10 +215,9 @@ exports.searchProperty = async (req, res) => {
         });
 
         if (!properties.length) {
-            return res.render('error-home', { error: 'No results found.', layout: false });
+            return res.render('error-home', { error: 'No property found.', layout: false });
         }
 
-        console.log("This is propz ",properties)
 
         res.render('home-search', { properties, layout: false });
     } catch (err) {
