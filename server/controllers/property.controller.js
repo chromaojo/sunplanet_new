@@ -128,6 +128,24 @@ exports.getAllFrontProp = async (req, res) => {
     }
 };
 
+exports.getOneFrontById = async (req, res) => {
+    try {
+        const properties = await Property.findByPk(req.params.id);
+        if (!properties) return res.status(404).json({ error: "Property not found" });
+
+        // res.json(property);
+        const property = properties.dataValues
+        const myAddress = property.address+ ", "+ property.city+ ", "+property.state +", "+property.country ;
+
+        const encodedAddress = encodeURIComponent(myAddress);
+        const iframeSrc = `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+
+        const notice = []
+        res.render('home-prop1', { layout : false , property , iframeSrc })
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
 
 // GET PROPERTY BY ID
 exports.getPropertyById = async (req, res) => {

@@ -23,7 +23,8 @@
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-md-8">
-      <form action="/spco/props/create" class="p-4 border rounded bg-light needs-validation" novalidate method="POST" enctype="multipart/form-data">
+      <form action="/spco/props/create" class="p-4 border rounded bg-light needs-validation" novalidate method="POST"
+        enctype="multipart/form-data">
         <div class="card">
           <div class="card-header pb-0">
             <div class="d-flex align-items-center">
@@ -69,8 +70,7 @@
                   <!-- Name Field -->
                   <div class="mb-3">
                     <label for="name" class="form-label">City</label>
-                    <input type="text" name="city" class="form-control" id="name"
-                      placeholder="Enter City" required>
+                    <input type="text" name="city" class="form-control" id="name" placeholder="Enter City" required>
                     <div class="invalid-feedback">Please enter the city of the property</div>
                   </div>
                 </div>
@@ -80,8 +80,7 @@
                   <!-- Name Field -->
                   <div class="mb-3">
                     <label for="name" class="form-label">State</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter a state"
-                      name="state" required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter a state" name="state" required>
                     <div class="invalid-feedback">Please enter state (Property Location).</div>
                   </div>
                 </div>
@@ -94,7 +93,7 @@
                     <div class="invalid-feedback">Please enter unit price</div>
                   </div>
                 </div>
-              </div>      
+              </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="mb-3">
@@ -102,17 +101,22 @@
                     <input type="number" name="postal_code" class="form-control" id="name"
                       placeholder="Enter postal code" required>
                     <div class="invalid-feedback">Please enter postal code.</div>
-                  </div>                
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <div class="mb-3">
                     <label for="role" class="form-label">Property Type</label>
+
                     <select class="form-select" id="role" name="property_type" required>
                       <option value="">Choose...</option>
-                      <option value="active">Active</option>
-                      <option value="closed">Closed</option>
-                      <option value="pending">Pending</option>
+                      <% propertyTypes.forEach(props=> { %>
+                        <option value="<%= props.prop_type %>" class="text-capitalize">
+                          <%= props.prop_type %>
+                        </option>
+                       
+                        <% }); %>
                     </select>
+
                     <div class="invalid-feedback">Please select a property type.</div>
                   </div>
                 </div>
@@ -131,8 +135,8 @@
                   <!-- Name Field -->
                   <div class="mb-3">
                     <label for="name" class="form-label">Size (SqFt)</label>
-                    <input type="number" name="size_in_sqft" class="form-control" id="name"
-                      placeholder="Enter Duration" required>
+                    <input type="number" name="size_in_sqft" class="form-control" id="name" placeholder="Enter Duration"
+                      required>
                     <div class="invalid-feedback">Kindly create a new property type if needed</div>
                   </div>
                 </div>
@@ -150,8 +154,8 @@
                 <div class="col">
                   <div class="mb-3">
                     <label for="name" class="form-label">Bathroom</label>
-                    <input type="number" name="bathrooms" class="form-control" id="name"
-                      placeholder="Enter Duration" required>
+                    <input type="number" name="bathrooms" class="form-control" id="name" placeholder="Enter Duration"
+                      required>
                     <div class="invalid-feedback">Kindly create a new property type if needed</div>
                   </div>
                 </div>
@@ -168,8 +172,9 @@
                 <div class="col-6">
                   <div class="mb-3">
                     <label for="message" class="form-label">Picture(s)</label>
-                    
-                      <input type="file" name="picture" id="picture" maxlength="5" multiple accept=".jpeg, .png, .jpg" class="form-control">
+
+                    <input type="file" name="picture" id="picture" maxlength="5" multiple accept=".jpeg, .png, .jpg"
+                      class="form-control">
                     <div class="invalid-feedback">Please select one or more pictures.</div>
                   </div>
                 </div>
@@ -181,7 +186,7 @@
                       <option value="for_lease">For Lease</option>
                       <option value="for_sale">For Sale</option>
                       <option value="shortlet">Shortlet</option>
-            
+
                     </select>
                     <div class="invalid-feedback">Please select a status.</div>
                   </div>
@@ -248,6 +253,25 @@
               </div>
             </div>
           </form>
+
+          <div class="p-4 border mt-4">
+            <strong>Available Property Types</strong> <br>
+            <table>
+              <% propertyTypes.forEach(props=> { %>
+              <tr class="mt-3">
+                <td>
+                  <strong class="text-uppercase">
+                    <%= props.prop_type %>
+                  </strong>
+                </td>
+                <td></td>
+                <td>
+                  <a href="/spco/del/property-type/<%= props.id %>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+              </tr>
+              <% }); %>
+            </table>
+          </div>
 
 
         </div>

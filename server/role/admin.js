@@ -2,6 +2,7 @@ const express = require("express");
 const propertyController = require("../controllers/property.controller");
 const router = express.Router();
 const propertyTypeController = require("../controllers/propertyType.controller");
+const  propertyType = require("../models/Property_type");
 const rentController = require("../controllers/rent.controller");
 const adminController = require("../controllers/admin.controller");
 const helpDeskController = require("../controllers/helpdesk.controller");
@@ -18,6 +19,7 @@ const {
     getAllAdminInvest,
     getInvestmentByIdAd
 } = require("../controllers/investment.controller");
+
 
 
 
@@ -75,15 +77,18 @@ router.get("/del/investnt/:id", deleteInvestment);
 
 // CRUD Routes
 router.post("/property/type", propertyTypeController.createPropertyType);
-router.get("/property/type", propertyTypeController.getAllPropertyTypes);
+router.get("/property-type", propertyTypeController.getAllPropertyTypes);
+router.get("/del/property-type/:id", propertyTypeController.deletePropertyType);
 
 // Properties Routes
-router.get('/create-property', authAdmin ,(req, res)=>{
+router.get('/create-property', authAdmin ,async(req, res)=>{
 
     const notice = [];
     const userData = req.admin;
+    const propertyTypes = await propertyType.findAll();
+    console.log('The types are ', propertyTypes)
 
-    res.render('admin-prop-form', {userData , notice})
+    res.render('admin-prop-form', {userData , notice, propertyTypes})
 })
 
 router.post("/props/create", propertyController.createProperty);

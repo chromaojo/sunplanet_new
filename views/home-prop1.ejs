@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Properties - Sun Planet</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="/assets1/img/favicon.png" rel="icon">
+    <link href="/assets1/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets1/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets1/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets1/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="/assets1/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets1/css/main.css" rel="stylesheet">
+
+</head>
+
+<body class="properties-page">
+
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="/" class="logo d-flex align-items-center">
+                <img src="/assets1/img/logo.png" alt="">
+                <!-- <h1 class="sitename">Sun<span>Planet</span></h1> -->
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li class="dropdown"><a href="#"><span>Investment</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="/about-invest">About Our Investment</a></li>
+                            <li><a href="#">Investments</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/properties" class="active">Properties</a></li>
+                    <li class="dropdown"><a href="#"><span>Login</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="/login-investor">Investor</a></li>
+                            <li><a href="/login-tenant">Tenant</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="main">
+
+        <!-- Page Title -->
+        <div class="page-title" data-aos="fade">
+            <div class="heading">
+                <div class="container">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-lg-7">
+                            <h1 class="mt-2">Property</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="breadcrumbs">
+                <div class="container">
+                    <ol>
+                        <li><a href="/">Home</a></li>
+                        <li class="current">Property Details</li>
+                    </ol>
+                </div>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <!-- Real Estate 2 Section -->
+        <section id="real-estate-2" class="real-estate-2 section">
+
+            <div class="container" data-aos="fade-up">
+
+                <div class="portfolio-details-slider swiper init-swiper">
+                    <script type="application/json" class="swiper-config">
+              {
+                "loop": true,
+                "speed": 600,
+                "autoplay": {
+                  "delay": 5000
+                },
+                "slidesPerView": "auto",
+                "navigation": {
+                  "nextEl": ".swiper-button-next",
+                  "prevEl": ".swiper-button-prev"
+                },
+                "pagination": {
+                  "el": ".swiper-pagination",
+                  "type": "bullets",
+                  "clickable": true
+                }
+              }
+            </script>
+                    <div class="swiper-wrapper align-items-center">
+
+                        <div class="swiper-slide">
+                            <img src="assets/img/property-slide/property-slide-1.jpg" alt="">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="assets/img/property-slide/property-slide-2.jpg" alt="">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="assets/img/property-slide/property-slide-3.jpg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="row justify-content-between gy-4 mt-4">
+
+                    <div class="col-lg-8" data-aos="fade-up">
+
+                        <div class="portfolio-description">
+                            <h2><%=property.property_name %></h2>
+                            <p>
+                                <%= property.description %>
+                            </p>
+
+                          
+                        </div><!-- End Portfolio Description -->
+
+                        <!-- Tabs -->
+                        <ul class="nav nav-pills mb-3">
+                            <li><a class="nav-link active" data-bs-toggle="pill" href="#real-estate-2-tab1">Video</a>
+                            </li>
+                          
+                            <li><a class="nav-link" data-bs-toggle="pill" href="#real-estate-2-tab3">Location</a></li>
+                        </ul><!-- End Tabs -->
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="real-estate-2-tab1"> <br>
+                                <b class="p-4">Video Content is Currently Unavailable</b>
+                            </div><!-- End Tab 1 Content -->
+
+                            <div class="tab-pane fade" id="real-estate-2-tab3">
+                               
+                                <iframe style="border:0; width: 100%; height: 400px;"
+                                    src="<%= iframeSrc %>">
+                                    frameborder="0" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div><!-- End Tab 3 Content -->
+
+                        </div><!-- End Tab Content -->
+
+                    </div>
+
+                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="portfolio-info">
+                            <h3>Property Details / Summary</h3>
+                            <ul class="text-capitalize">
+                                <li><strong>Available :</strong> <%=property.number_of_units %> Units </li>
+                                <li><strong>Location:</strong> 
+                                    <%=property.address %> , <%=property.city %> , <%=property.state %> State, <%=property.country %>
+                                </li>
+                                <li><strong>Property Type:</strong> <%=property.property_type %></li>
+                                <li><strong>Amount :</strong> ₦ <%= Number
+                        (property.rent_price).toLocaleString() %> </li>
+                                <li><strong>Status:</strong>  <%=property.action.replace('_', ' ' ) %> </li>
+                                <li><strong>Size / Area:</strong> <span>  <%=property.size_in_sqft %> Ft <sup>2</sup></span></li>
+                                <li><strong>Beds:</strong>   <%=property.bedrooms %></li>
+                                <li><strong>Bathrooms:</strong><%=property.bathrooms %></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section><!-- /Real Estate 2 Section -->
+
+    </main>
+
+    <footer id="footer" class="footer light-background">
+
+        <div class="container">
+            <div class="row gy-3">
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-geo-alt icon"></i>
+                    <div class="address">
+                        <h4>Address</h4>
+                        <p>91 St. Finnbars Road ,</p>
+                        <p>Akoka, Yaba ,</p>
+                        <p>Lagos State, Nigeria</p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-telephone icon"></i>
+                    <div>
+                        <h4>Contact</h4>
+                        <p><strong>Phone:</strong> <span>08101353450, 08101631008</span></p>
+                        <p><strong>Email:</strong> <span>sunplanetcompanyltd@gmail.com</span></p>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    <i class="bi bi-clock icon"></i>
+                    <div>
+                        <h4>Opening Hours</h4>
+                        <p>
+                            <strong>Mon-Sat:</strong> <span>9AM - 2PM</span><br>
+                            <strong>Sunday</strong>: <span>Closed</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="d-flex">
+                        <i class="bi bi-link icon"></i>
+                        <h4>Logins</h4>
+                    </div>
+
+                    <div class="social-links d-flex">
+
+                        <a href="/login-admin" class="twitter mx-3">
+                            Admin
+                        </a>
+                        <a href="/login-investor" class="facebook mx-3">
+                            Investor
+                        </a>
+                        <a href="/login-tenant" class="instagram mx-3">
+                            Tenant
+                        </a>
+
+                    </div> <br>
+
+                    <h4>Contact / Follow Us</h4>
+                    <div class="social-links d-flex">
+                        <a href="mailto:sunplanetcompanyltd@gmail.com" class="twitter">
+                            <i class="bi bi-envelope"></i></a>
+                        <a href="https://web.facebook.com/sunplanetco" class="facebook"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Sun Planet Company</strong> <br> <span>All Rights
+                    Reserved</span>
+            </p>
+            <div class="credits">
+
+                Powered by <a href="#">Royal Reality Technology</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Preloader -->
+    <!-- <div id="preloader"></div> -->
+
+    <!-- Vendor JS Files -->
+    <script src="/assets1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets1/vendor/aos/aos.js"></script>
+    <script src="/assets1/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets1/vendor/purecounter/purecounter_vanilla.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets1/js/main.js"></script>
+
+</body>
+
+</html>
