@@ -13,6 +13,7 @@ require('dotenv').config();
 
 
 
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(expressLayouts);
@@ -47,7 +48,7 @@ app.all("*", (req, res)=>{
     const error = "You are not authorized to access this page";
     
     return res.render('error-home', {error , layout: false })
-}) 
+}) ;
 
 // Sync Database and Start Server { alter : true }
 sequelize.sync().then(() => {
@@ -58,4 +59,4 @@ sequelize.sync().then(() => {
 
 app.listen(port, ()=>{
     console.log(`App Running on ${port}`);
-})
+});

@@ -10,7 +10,7 @@ const Investment = sequelize.define(
             autoIncrement: true,
             primaryKey: true,
         },
-        property_name: {
+        investment_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },

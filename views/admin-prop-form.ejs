@@ -22,6 +22,54 @@
 </div>
 <div class="container-fluid py-4">
   <div class="row">
+ 
+    <div class="col-md-4">
+      <div class="card card-profile">
+        <img src="/assets/img/home-decor-1.jpg" alt="Image placeholder" class="card-img-top">
+
+        <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+          <div class="text-center mt-4 mb-4">
+            <b>Add Property Type</b>
+          </div>
+        </div>
+        <div class="card-body pt-0">
+          <form action="" method="POST">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Property Type</label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter new property Type"
+                    name="property_name" required>
+                  <div class="invalid-feedback">Please enter property type.</div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Add</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="p-4 border mt-4">
+            <strong>Available Property Types</strong> <br> </br>
+            <table>
+              <% propertyTypes.forEach(props=> { %>
+              <tr class="mt-3">
+                <td>
+                  <p class="text-uppercase">
+                    <%= props.prop_type %>
+                  </p>
+                </td>
+                <td></td>
+                <td>
+                  <a href="/spco/del/property-type/<%= props.id %>" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+              </tr>
+              <% }); %>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
     <div class="col-md-8">
       <form action="/spco/props/create" class="p-4 border rounded bg-light needs-validation" novalidate method="POST"
         enctype="multipart/form-data">
@@ -201,7 +249,7 @@
                     <div class="invalid-feedback">Please enter the property details.</div>
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-5">
                   <div class="mb-3">
                     <label for="role" class="form-label">Property Status</label>
                     <select class="form-select" id="role" name="lease_status" required>
@@ -229,53 +277,6 @@
           </div>
         </div>
       </form>
-    </div>
-    <div class="col-md-4">
-      <div class="card card-profile">
-        <img src="/assets/img/home-decor-1.jpg" alt="Image placeholder" class="card-img-top">
-
-        <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
-          <div class="text-center mt-4 mb-4">
-            <b>Add Property Type</b>
-          </div>
-        </div>
-        <div class="card-body pt-0">
-          <form action="" method="POST">
-            <div class="row">
-              <div class="col">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Property Type</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter new property Type"
-                    name="property_name" required>
-                  <div class="invalid-feedback">Please enter property type.</div>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Add</button>
-              </div>
-            </div>
-          </form>
-
-          <div class="p-4 border mt-4">
-            <strong>Available Property Types</strong> <br>
-            <table>
-              <% propertyTypes.forEach(props=> { %>
-              <tr class="mt-3">
-                <td>
-                  <strong class="text-uppercase">
-                    <%= props.prop_type %>
-                  </strong>
-                </td>
-                <td></td>
-                <td>
-                  <a href="/spco/del/property-type/<%= props.id %>" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-              </tr>
-              <% }); %>
-            </table>
-          </div>
-
-
-        </div>
-      </div>
     </div>
   </div>
 </div>

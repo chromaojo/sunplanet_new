@@ -1,5 +1,6 @@
 const Admin = require("../models/Admin");
 const bcrypt = require("bcryptjs");
+const mail = require('../config/mail')
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -91,6 +92,36 @@ exports.createAdmin = async (req, res) => {
             password_hash: hashedPassword,
             role,
         });
+
+        
+                const messages = {
+                    from: {
+                        name: 'Sun Planet Company',
+                        address: 'felixtemidayoojo@gmail.com',
+                    },
+                    to: email,
+                    subject: "Welcome to the Sun Planet Team!",
+                    text: `Dear ${full_name},
+                    <p>Congratulations on joining Sun Planet Company Ltd., the trusted name in real estate management and solutions!
+                    Your account has been successfully created. To ensure security, your phone number ${phone} has been set as your initial password. We recommend updating it immediately by following these steps: </p>        
+                    <b>Log in to the admin portal at http://sunplanet.ng/login-admin .</b>
+        
+                      <ul>
+                      <li> Go to "Account Settings" and click on "Change Password." </li>
+                      <li> Follow the instructions to set a stronger password. </li>
+                      </ul>
+                      <p>
+                      As an admin, you play a vital role in keeping our operations efficient and clients satisfied. If you have any questions or require onboarding assistance, don’t hesitate to reach out.
+                      </p> 
+                      <p> We look forward to working with you to achieve excellence in real estate services! </p>     
+        
+                      <p> Best regards, <br>The Sun Planet Team</p>
+
+                      http://sunplanet.ng/ | https://wa.me/8101631008 | +234 706 623 1523`
+                };
+        
+                // Send email
+                mail.sendIt(messages);
         
         // res.status(201).json({ message: "Admin created successfully", admin: newAdmin });
         res.redirect('/spco/admins')

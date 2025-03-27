@@ -9,14 +9,15 @@
                 <div class="numbers">
                   <p class="text-sm mb-3 text-uppercase font-weight-bold">
                     <img src="/assets/img/icons/flags/nijja.gif" alt="Country flag" width="30px">
-                   Property <%=property.action.replace('_', ' ') %> --  ₦<%= Number (property.rent_price).toLocaleString() %>
-             
+                    Property <%=property.action.replace('_', ' ' ) %> -- ₦<%= Number
+                        (property.rent_price).toLocaleString() %>
+
                   </p>
                   <h5 class="font-weight-bolder text-capitalize">
                     <%=property.property_name %>
                   </h5>
                   <div class="row">
-                    <div class="col-md-6 p-3">
+                    <div class="col-md-7 p-3">
 
                       <p class="mb-3 text-capitalize">
                         <span class="text-success text-sm font-weight-bolder">Available Units</span>
@@ -28,7 +29,8 @@
                       </p>
                       <p class="mb-3 text-capitalize">
                         <span class="text-success text-sm font-weight-bolder">Address </span>
-                        <%=property.address %> , <%=property.city %> ,  <%=property.state %>  State,  <%=property.country %> 
+                        <%=property.address %> , <%=property.city %> , <%=property.state %> State, <%=property.country
+                                %>
                       </p>
                       <p class="mb-3 text-capitalize">
                         <span class="text-success text-sm font-weight-bolder">Amount </span>
@@ -39,33 +41,41 @@
                         <%= property.description %>
                       </p>
                       <b class="text-capitalize">
-                        Status :  <%= property.lease_status %> 
-                       </b> <br>
-                       <p class="mb-3 mt-3 text-capitalize">
-                         <b>
-                           <span class="text-success text-sm font-weight-bolder">Bedroom(s)</span>
-                         <%=property.bedrooms %> unit(s)
-                         </b>
-                       </p>
-                       <p class="mb-3 text-capitalize">
-                         <span class="text-success text-sm font-weight-bolder">Bathroom(s)</span>
-                         <%=property.bathrooms %> unit(s)
-                       </p>
-                      
-                    </div>
-                    <div class="col-md-6 p-2">
-                      <p class="mb-4 text-center">
-                        <b class="p-4">
-                          Check Property On Map
+                        Status : <%= property.lease_status %>
+                      </b> <br>
+                      <p class="mb-3 mt-3 text-capitalize">
+                        <b>
+                          <span class="text-success text-sm font-weight-bolder">Bedroom(s)</span>
+                          <%=property.bedrooms %> unit(s)
                         </b>
                       </p>
-                      <iframe width="500vh" height="400" src="<%= iframeSrc %>"></iframe><br>
-                    
+                      <p class="mb-3 text-capitalize">
+                        <span class="text-success text-sm font-weight-bolder">Bathroom(s)</span>
+                        <%=property.bathrooms %> unit(s)
+                      </p>
+
+                    </div>
+                    <div class="col-md-5 ">
+                      <div class="card p-1 m-auto" style="height: 80vh;">
+
+                        <div class="card card-profile">
+                          <% let pix=property.picture.split(',') %>
+                            <% for( let index=0; index < pix.length; index++ ) { %>
+                              <a href="/prop/<%= pix[index] %>">
+                              <img src="/prop/<%= pix[index] %>" alt="property  Image" class="card-img-top mt-2">
+                            </a>
+                              <% } %>
+                        </div>
+                        <p class="mb-4 text-center p-4"> <br>
+
+                          <b class="mt-2">
+                            Check Property On Map
+                          </b>
+                        </p>
+                        <iframe width="100%" height="400" src="<%= iframeSrc %>"></iframe><br>
+                      </div>
                     </div>
                   </div>
-
-                  
-
                 </div>
               </div>
 

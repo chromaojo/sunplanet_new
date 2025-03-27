@@ -20,11 +20,10 @@
                     <div class="numbers">
                       <p class="text-sm mb-3 text-uppercase font-weight-bold">
                         <img src="../assets/img/icons/flags/nijja.gif" alt="Country flag" width="30px">
-                        <%= investment.property_name %>
+                        <%= investment.investment_name %>
                       </p>
                       <h5 class="font-weight-bolder text-capitalize">
-                        Make ₦ <%= investment.expected_return %> on every ₦ <%= investment.investment_amount %> you
-                            invest in this plan
+                        Make ₦ <%= investment.expected_return %> on every ₦ <%= investment.investment_amount %> you invest in this plan
                       </h5>
 
                       <p class="mb-4 text-capitalize">
@@ -32,8 +31,8 @@
                         <%= investment.investment_duration %> Months
                       </p>
 
-                      <a href="/spco/investment/<%= investment.id %>" class="btn btn-primary">Read More</a>
-                      <a href="/spco/del/investnt/<%= investment.id %>" class="btn btn-danger">Delete</a>
+                      <a href="/spco/investment/<%= investment.id %>" class="btn btn-primary w-25">Read More</a>
+                    
                     </div>
                   </div>
 

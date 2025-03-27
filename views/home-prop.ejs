@@ -115,7 +115,8 @@
                     <span class="sale-rent text-capitalize">
                       <%= props.property_type %> | ₦ <%= Number (props.rent_price).toLocaleString() %>
                     </span>
-                    <h3><a href="#" class="stretched-link text-capitalize">
+                    
+                    <h3><a href="/properties/ <%= props.id %>" class="stretched-link text-capitalize">
                         <%= props.property_name %>
                       </a></h3>
                     <div class="card-content d-flex flex-column justify-content-center text-center">

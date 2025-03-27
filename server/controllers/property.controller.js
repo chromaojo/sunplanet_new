@@ -57,7 +57,6 @@ exports.createProperty = async (req, res) => {
             // res.status(201).json({ message: "Property created successfully", property });
             res.redirect('/spco/props')
         } catch (error) {
-            console.error("Database error:", error);
             res.status(500).json({ error: error.message });
         }
     }); 

@@ -1,5 +1,6 @@
 const Investor = require("../models/Investor");
 const bcrypt = require("bcryptjs");
+const mail = require('../config/mail')
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -8,8 +9,8 @@ const { v4: uuidv4 } = require("uuid");
 // CREATE AN INVESTOR
 exports.createInvestor = async (req, res) => {
     try {
-        const { full_name, email, phone, about, investment_amount , bank_acct, whatsapp , bank_name , bank_acct_name } = req.body;
-        
+        const { full_name, email, phone, about, investment_amount, bank_acct, whatsapp, bank_name, bank_acct_name } = req.body;
+
         // Hash password
         const hashedPassword = await bcrypt.hash(phone, 10);
 
@@ -17,8 +18,42 @@ exports.createInvestor = async (req, res) => {
             investor_id: uuidv4(),
             full_name, email, phone,
             password_hash: hashedPassword,
-            bank_acct, whatsapp , bank_name , bank_acct_name
+            bank_acct, whatsapp, bank_name, bank_acct_name
         });
+        const messages = {
+            from: {
+                name: 'Sun Planet Company',
+                address: 'felixtemidayoojo@gmail.com',
+            },
+            to: email,
+            subject: "Welcome to Sun Planet Company – Your Real Estate Investment Partner!!",
+            text: `
+            Dear ${full_name},
+            
+            Welcome to Sun Planet Company Ltd., where we turn property investments into lasting value and success!
+
+            Your account has been created, and your phone number ${phone} is set as your temporary password. To secure your account, we recommend changing your password immediately.
+
+            Here’s how:
+
+            Visit [website link] and log in with your phone number and temporary password.
+
+            Navigate to "Settings" > "Change Password."
+
+            Create a strong and unique password to safeguard your account.
+
+            As a valued investor, you now have access to exclusive opportunities, detailed reports, and tools to monitor your investment progress. For any questions, our team is here to assist you.
+
+            Thank you for trusting Sun Planet Company with your investment journey!
+
+            Best regards,
+            The Sun Planet Team
+                        
+            http://sunplanet.ng/ | https://wa.me/8101631008 | +234 706 623 1523`
+        };
+
+        // Send email
+        mail.sendIt(messages);
         res.redirect('/spco/investors')
     } catch (error) {
         console.error('The error is ', error)

@@ -1,18 +1,19 @@
 <div class="container mt-5">
     <h2 class="text-center text-light font-weight-bold">Create Investment</h2>
     
-    <form action="/spco/investment" class="p-4 border rounded bg-light needs-validation" novalidate method="POST">
+    <form action="/spco/investment" class="p-4 border rounded bg-light needs-validation" novalidate method="POST"
+    enctype="multipart/form-data">
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Investment Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter new property name" name="property_name" required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter new property name" name="investment_name" required>
                     <div class="invalid-feedback">Please enter investment name.</div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Investment Amount (Unit price)</label>
@@ -21,8 +22,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6">
+        <div class="row">  
+            <div class="col-md-6">
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Expected Returns (ROI)</label>
@@ -30,7 +31,7 @@
                     <div class="invalid-feedback">Please enter the returns on investment.</div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Investment Duration (Month)</label>
@@ -41,7 +42,7 @@
         </div>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="message" class="form-label">Investment Details</label>
@@ -50,7 +51,16 @@
                     <div class="invalid-feedback">Please enter the returns on investment.</div>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
+
+                <!-- Name Field -->
+                <div class="mb-3">
+                    <label for="message" class="form-label">Select Picture(s)</label>
+
+                    <input type="file" name="picture" id="picture" maxlength="2" multiple accept=".jpeg, .png, .jpg"
+                      class="form-control" required>
+                    <div class="invalid-feedback">Please select one or more pictures.</div>
+                  </div>
                 <!-- Name Field -->
                 <div class="mb-3">
                     <label for="role" class="form-label">Select Status</label>
@@ -63,14 +73,17 @@
                     <div class="invalid-feedback">Please select a status.</div>
                 </div>
                 <!-- Checkbox -->
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="" id="terms" required>
-                    <label class="form-check-label" for="terms">
-                        I have cross checked the details inputted .
-                    </label>
-                    <div class="invalid-feedback">Ensure every information is accurate.</div>
-                </div>
+               
 
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="terms" required>
+                <label class="form-check-label" for="terms">
+                    I have cross checked the details inputted .
+                </label>
+                <div class="invalid-feedback">Ensure every information is accurate.</div>
             </div>
         </div>
 

@@ -2,24 +2,90 @@ const Tenant = require("../models/Tenant");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const mail = require('../config/mail')
 dotenv.config();
 const { v4: uuidv4 } = require("uuid");
 
 // CREATE A TENANT
 exports.createTenant = async (req, res) => {
-    const { full_name, email, phone, about, address , whatsapp } = req.body;
+    const { full_name, email, phone, about, address, whatsapp } = req.body;
     try {
+
+                // Check if tenant with the same email or phone already exists
+                const existingTenant = await Tenant.findOne({
+                    where: {
+                        [Op.or]: [
+                            { email },
+                            { phone }
+                        ]
+                    }
+                });
         
+                if (existingTenant) {
+                    const errorMessage = `
+                        <p>Dear ${full_name || "User"},</p>
+                        <p>We noticed that you attempted to create / login a tenant account with Sun Planet Company Ltd. However, an account already exists with the provided email or phone number:</p>
+                        <ul>
+                            ${email ? `<li>Email: ${email}</li>` : ""}
+                            ${phone ? `<li>Phone: ${phone}</li>` : ""}
+                        </ul>
+                        <p>If this was a mistake, please verify your details and try again. If you need assistance, feel free to contact us.</p>
+                        <p>Thank you for choosing Sun Planet Company!</p>
+                        <p>Warm regards,<br>The Sun Planet Team</p>
+                        <p>Contact Us: <a href="http://sunplanet.ng">http://sunplanet.ng</a> | <a href="https://wa.me/8101631008">WhatsApp</a> | +234 706 623 1523</p>
+                    `;
+        
+                    mail.sendIt({
+                        from: { name: "Sun Planet Company" },
+                        to: email,
+                        subject: "Account Creation Error – Sun Planet Company",
+                        html: errorMessage
+                    });
+        
+                    return res.status(400).json({ error: "An account already exists with the provided email or phone number." });
+                }
+        
+
+
         const hashedPassword = await bcrypt.hash(phone, 10);
 
         const tenant = await Tenant.create({
             tenant_id: uuidv4(),
             full_name, email, phone,
-            password_hash: hashedPassword, address, whatsapp , about
+            password_hash: hashedPassword, address, whatsapp, about
         });
+        const messages = {
+            from: {
+                name: 'Sun Planet Company'
+            },
+            to: email,
+            subject: "Welcome to Sun Planet Company – Your Property Management Partner!",
+            text: `
+            Dear ${full_name},
+            Welcome to Sun Planet Company Ltd., where we are committed to making property management seamless for you! In order to enable you enjoy our premium services, your account has been successfully created. 
+            For your convenience, your phone number ${phone} has been set as your initial password. 
+            However, for your security, we strongly recommend updating it to a more secure password at your earliest convenience.
+                        
+            Here’s how you can update your password:
+            Log in to your account at http://sunplanet.ng/login-tenant.
+            Navigate to the "Profile" or "Account Settings" section.
+
+            <p>Select "Change Password" and follow the prompts.<br>
+            We’re here to ensure your rental experience is smooth and hassle-free. Feel free to contact us for any inquiries or assistance.</p>
+                        
+            <p>Thank you for choosing Sun Planet Company!<br>
+            Warm regards,<br>
+            The Sun Planet Team</p>
+            
+            http://sunplanet.ng/ | https://wa.me/8101631008 | +234 706 623 1523`
+        };
+
+        // Send email
+        mail.sendIt(messages);
         // res.status(201).json({ message: "Tenant created successfully", tenant });
         res.redirect("/spco/tenantz")
     } catch (error) {
+        console.log('The erro is ', error)
         res.status(500).json({ error: error.message });
     }
 };
@@ -70,7 +136,7 @@ exports.getAllTenants = async (req, res) => {
         const tenants = await Tenant.findAll();
         const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
         // res.json(tenants);
-        
+
         const notice = [];
         const users = tenants;
         const acct_type = 'Tenants';
@@ -92,8 +158,8 @@ exports.getTenantById = async (req, res) => {
         const notice = [];
         const user = tenant.dataValues;
         delete user.password_hash
-        console.log("The user is ",user)
-        return res.render('admin-users-tenant', { user, userData, notice})
+        console.log("The user is ", user)
+        return res.render('admin-users-tenant', { user, userData, notice })
 
     } catch (error) {
         res.status(500).json({ error: error.message });
