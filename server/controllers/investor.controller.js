@@ -28,28 +28,28 @@ exports.createInvestor = async (req, res) => {
             to: email,
             subject: "Welcome to Sun Planet Company – Your Real Estate Investment Partner!!",
             text: `
-            Dear ${full_name},
+    Dear ${full_name},
             
-            Welcome to Sun Planet Company Ltd., where we turn property investments into lasting value and success!
+        Welcome to Sun Planet Company Ltd., where we turn property investments into lasting value and success!
 
-            Your account has been created, and your phone number ${phone} is set as your temporary password. To secure your account, we recommend changing your password immediately.
+        Your account has been created, and your phone number ${phone} is set as your temporary password. To secure your account, we recommend changing your password immediately.
 
-            Here’s how:
+        Here’s how:
 
-            Visit [website link] and log in with your phone number and temporary password.
+        Visit [website link] and log in with your phone number and temporary password.
 
-            Navigate to "Settings" > "Change Password."
+        Navigate to "Settings" > "Change Password."
 
-            Create a strong and unique password to safeguard your account.
+        Create a strong and unique password to safeguard your account.
 
-            As a valued investor, you now have access to exclusive opportunities, detailed reports, and tools to monitor your investment progress. For any questions, our team is here to assist you.
+        As a valued investor, you now have access to exclusive opportunities, detailed reports, and tools to monitor your investment progress. For any questions, our team is here to assist you.
 
-            Thank you for trusting Sun Planet Company with your investment journey!
+        Thank you for trusting Sun Planet Company with your investment journey!
 
-            Best regards,
-            The Sun Planet Team
+        Best regards,
+        The Sun Planet Team
                         
-            http://sunplanet.ng/ | https://wa.me/8101631008 | +234 706 623 1523`
+    http://sunplanet.ng/ | https://wa.me/8101631008 | +234 706 623 1523`
         };
 
         // Send email

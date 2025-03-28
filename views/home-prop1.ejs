@@ -47,7 +47,7 @@
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="/about-invest">About Our Investment</a></li>
-                            <li><a href="#">Investments</a></li>
+                            <li><a href="/ivestmentz">Investments</a></li>
                         </ul>
                     </li>
                     <li><a href="/properties" class="active">Properties</a></li>
@@ -83,6 +83,7 @@
                 <div class="container">
                     <ol>
                         <li><a href="/">Home</a></li>
+                        <li><a href="/properties">Properties</a></li>
                         <li class="current">Property Details</li>
                     </ol>
                 </div>
@@ -115,16 +116,23 @@
               }
             </script>
                     <div class="swiper-wrapper align-items-center">
+                        <% if (property.picture) { %>
 
-                        <% let pix=property.picture.split(',') %>
-                            <% for( let index=0; index < pix.length; index++ ) { %>
-                              
-                                <div class="swiper-slide">
-                                    <a href="/prop/<%= pix[index] %>">
-                                        <img src="/prop/<%= pix[index] %>" alt=" Property Image">
-                                    </a>
-                                </div>
-                              <% } %>
+                            <% let pix=property.picture.split(',') %>
+                                <% for( let index=0; index < pix.length; index++ ) { %>
+
+                                    <div class="swiper-slide">
+                                        <a href="/prop/<%= pix[index] %>">
+                                            <img src="/prop/<%= pix[index] %>" alt=" Property Image">
+                                        </a>
+                                    </div>
+                                    <% } %>
+
+                            <% } else { %>
+                                <a href="/assets1/img/logo.png">
+                                    <img src="/assets1/img/logo.png" alt=" Property Image">
+                                </a>
+                             <% } %>
                     </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -136,19 +144,21 @@
                     <div class="col-lg-8" data-aos="fade-up">
 
                         <div class="portfolio-description">
-                            <h2><%=property.property_name %></h2>
+                            <h2>
+                                <%=property.property_name %>
+                            </h2>
                             <p>
                                 <%= property.description %>
                             </p>
 
-                          
+
                         </div><!-- End Portfolio Description -->
 
                         <!-- Tabs -->
                         <ul class="nav nav-pills mb-3">
                             <li><a class="nav-link active" data-bs-toggle="pill" href="#real-estate-2-tab1">Video</a>
                             </li>
-                          
+
                             <li><a class="nav-link" data-bs-toggle="pill" href="#real-estate-2-tab3">Location</a></li>
                         </ul><!-- End Tabs -->
 
@@ -159,9 +169,8 @@
                             </div><!-- End Tab 1 Content -->
 
                             <div class="tab-pane fade" id="real-estate-2-tab3">
-                               
-                                <iframe style="border:0; width: 100%; height: 400px;"
-                                    src="<%= iframeSrc %>">
+
+                                <iframe style="border:0; width: 100%; height: 400px;" src="<%= iframeSrc %>">
                                     frameborder="0" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div><!-- End Tab 3 Content -->
@@ -174,17 +183,30 @@
                         <div class="portfolio-info">
                             <h3>Property Details / Summary</h3>
                             <ul class="text-capitalize">
-                                <li><strong>Available :</strong> <%=property.number_of_units %> Units </li>
-                                <li><strong>Location:</strong> 
-                                    <%=property.address %> , <%=property.city %> , <%=property.state %> State, <%=property.country %>
+                                <li><strong>Available :</strong>
+                                    <%=property.number_of_units %> Units
                                 </li>
-                                <li><strong>Property Type:</strong> <%=property.property_type %></li>
-                                <li><strong>Amount :</strong> ₦ <%= Number
-                        (property.rent_price).toLocaleString() %> </li>
-                                <li><strong>Status:</strong>  <%=property.action.replace('_', ' ' ) %> </li>
-                                <li><strong>Size / Area:</strong> <span>  <%=property.size_in_sqft %> Ft <sup>2</sup></span></li>
-                                <li><strong>Beds:</strong>   <%=property.bedrooms %></li>
-                                <li><strong>Bathrooms:</strong><%=property.bathrooms %></li>
+                                <li><strong>Location:</strong>
+                                    <%=property.address %> , <%=property.city %> , <%=property.state %> State,
+                                                <%=property.country %>
+                                </li>
+                                <li><strong>Property Type:</strong>
+                                    <%=property.property_type %>
+                                </li>
+                                <li><strong>Amount :</strong> ₦ <%= Number (property.rent_price).toLocaleString() %>
+                                </li>
+                                <li><strong>Status:</strong>
+                                    <%=property.action.replace('_', ' ' ) %>
+                                </li>
+                                <li><strong>Size / Area:</strong> <span>
+                                        <%=property.size_in_sqft %> Ft <sup>2</sup>
+                                    </span></li>
+                                <li><strong>Beds:</strong>
+                                    <%=property.bedrooms %>
+                                </li>
+                                <li><strong>Bathrooms:</strong>
+                                    <%=property.bathrooms %>
+                                </li>
                             </ul>
                         </div>
                     </div>

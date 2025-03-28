@@ -15,6 +15,7 @@ const {loginAdmin , logoutAdmin} = require('../controllers/admin.controller')
 const {loginTenant, } = require('../controllers/tenant.controller');
 const {loginInvestor} = require('../controllers/investor.controller');
 const { getAllFrontProp, searchProperty, getAllLeaseFrontProp, getAllSalesFrontProp , getAllShortFrontProp, getOneFrontById } = require('../controllers/property.controller')
+const { getAllFrontInvestments } = require('../controllers/investment.controller')
 require('dotenv').config();
 
 
@@ -106,6 +107,12 @@ route.post('/KjXxXYtF/login', loginInvestor);
 
 // Tenant Login 
 route.post('/tTxDiIOzXlO/login', loginTenant);
+
+
+// Investment Section 
+
+route.get('/ivestmentz', AvoidIndex, getAllFrontInvestments);
+
 
 
 // Properties Section 

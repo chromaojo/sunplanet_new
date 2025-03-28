@@ -10,7 +10,8 @@ const transporter = nodemailer.createTransport({
 
 
 const sendIt = (xyz)=>{
-    transporter.sendMail(xyz)
+    transporter.sendMail(xyz);
+    console.log('Email Message Sent');
 }
 
 

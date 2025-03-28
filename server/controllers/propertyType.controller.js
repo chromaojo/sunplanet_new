@@ -11,7 +11,8 @@ exports.createPropertyType = async (req, res) => {
 
         const propertyType = await PropertyType.create({ prop_type });
 
-        res.status(201).json({ message: "Property type created successfully", propertyType });
+        // res.status(201).json({ message: "Property type created successfully", propertyType });
+        res.redirect('/spco/create-property')
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -62,7 +63,8 @@ exports.deletePropertyType = async (req, res) => {
         if (!propertyType) return res.status(404).json({ error: "Property type not found" });
 
         await propertyType.destroy();
-        res.json({ message: "Property type deleted successfully" });
+        // res.json({ message: "Property type deleted successfully" });
+        res.redirect('/spco/create-property')
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

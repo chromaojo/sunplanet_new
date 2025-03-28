@@ -101,7 +101,8 @@ exports.createAdmin = async (req, res) => {
                     },
                     to: email,
                     subject: "Welcome to the Sun Planet Team!",
-                    text: `Dear ${full_name},
+                    text: `
+                    Dear ${full_name},
                     <p>Congratulations on joining Sun Planet Company Ltd., the trusted name in real estate management and solutions!
                     Your account has been successfully created. To ensure security, your phone number ${phone} has been set as your initial password. We recommend updating it immediately by following these steps: </p>        
                     <b>Log in to the admin portal at http://sunplanet.ng/login-admin .</b>

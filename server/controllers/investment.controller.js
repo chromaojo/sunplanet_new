@@ -134,6 +134,19 @@ exports.getAllAdminInvest = async (req, res) => {
     }
 };
 
+exports.getAllFrontInvestments = async (req, res) => {
+    try {
+        const investments = await Investment.findAll();
+        // res.json(investments);
+
+      
+
+        res.render('home-investmentz', { layout: false, investments })
+    } catch (error) {
+        console.log("the eror is ", error)
+        res.status(500).json({ error: error.message });
+    }
+};
 /**
  * GET SINGLE INVESTMENT
  */

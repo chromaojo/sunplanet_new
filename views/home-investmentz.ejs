@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Properties - Sun Planet</title>
+  <title>investments - Sun Planet</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -29,7 +29,7 @@
 
 </head>
 
-<body class="properties-page">
+<body class="investment-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
@@ -43,14 +43,14 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About Us</a></li>
-          <li class="dropdown"><a href="#"><span>Investment</span> <i
+          <li class="dropdown"><a href="#" class="active"><span>Investment</span> <i
                 class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="/about-invest">About Our Investment</a></li>
               <li><a href="/ivestmentz">Investments</a></li>
             </ul>
           </li>
-          <li><a href="/properties" class="active">Properties</a></li>
+          <li><a href="/properties" >Properties</a></li>
           <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="/login-investor">Investor</a></li>
@@ -73,7 +73,7 @@
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
-              <h1 class="mt-2">Properties</h1>
+              <h1 class="mt-2">Investments</h1>
               <div class="border p-4">
                 <form action="/search/prop" method="POST">
                   <div class="d-flex">
@@ -94,7 +94,7 @@
         <div class="container">
           <ol>
             <li><a href="/">Home</a></li>
-            <li class="current">Properties</li>
+            <li class="current">Investment Plan</li>
           </ol>
         </div>
       </nav>
@@ -104,43 +104,37 @@
     <section id="real-estate" class="real-estate section">
 
       <div class="container">
-        <% if (properties.length> 0) { %>
+        <% if (investments.length> 0) { %>
           <div class="row gy-4">
-            <% if (properties.length > 1) { %>
-              <p class="text-end text-capitalize">There are <%= properties.length %> properties found</p>
-              <% } else { %>
-                <p class="text-end text-capitalize">There is only <%= properties.length %> property found</p>
-            <% } %>
-            
-            <% properties.forEach(props=> { %>
+            <p class="text-end text-capitalize">There are <%= investments.length %> investments found</p>
+            <% investments.forEach(props=> { %>
               <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="card">
                   <% if (props.picture) { %> 
                     <% let pixz = props.picture.split(',') %>
-                    <img src="/prop/<%= pixz[0] %>" alt="" class="img-fluid">
+                    <img src="/invest/<%= pixz[0] %>" alt="" class="img-fluid">
                    <% } else { %>
-                    <img src="assets1/img/properties/property-1.jpg" alt="" class="img-fluid">
+                    <img src="/assets1/img/properties/property-2.jpg" alt="" class="img-fluid">
                   <% } %>
                   
                   <div class="card-body">
-                 
                     <span class="sale-rent text-capitalize">
-                      <%= props.property_type %> | ₦ <%= Number (props.rent_price).toLocaleString() %>
+                      <%= props.property_type %> | ₦ <%= Number (props.investment_amount).toLocaleString() %>
                     </span>
                     
-                    <h3><a href="/properties/ <%= props.id %>" class="stretched-link text-capitalize">
-                        <%= props.property_name %>
+                    <h3><a href="/investments/ <%= props.id %>" class="stretched-link text-capitalize">
+                        <%= props.investment_name %>
                       </a></h3>
                     <div class="card-content d-flex flex-column justify-content-center text-center">
                       <div class="row propery-info">
-                        <div class="col">Size (SqFt)</div>
+                        <div class="col">Status</div>
                         <div class="col">Beds</div>
                         <div class="col">Baths</div>
                         <div class="col">Units</div>
                       </div>
                       <div class="row">
-                        <div class="col">
-                          <%= props.size_in_sqft %>
+                        <div class="col text-capitalize">
+                          <%= props.status %>
                         </div>
                         <div class="col">
                           <%= props.bedrooms %>
