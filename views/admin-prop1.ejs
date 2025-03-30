@@ -64,14 +64,16 @@
                         </p>
                         <iframe width="100%" height="600" src="<%= iframeSrc %>"></iframe><br>
 
-                        <div class="card card-profile">
-                          <% let pix=property.picture.split(',') %>
-                            <% for( let index=0; index < pix.length; index++ ) { %>
-                              <a href="/prop/<%= pix[index] %>">
-                              <img src="/prop/<%= pix[index] %>" alt="property  Image" class="card-img-top mt-2">
-                            </a>
-                              <% } %>
-                        </div>
+                        <% if (property.picture) { %>
+                          <div class="card card-profile">
+                            <% let pix=property.picture.split(',') %>
+                              <% for( let index=0; index < pix.length; index++ ) { %>
+                                <a href="/prop/<%= pix[index] %>">
+                                <img src="/prop/<%= pix[index] %>" alt="property  Image" class="card-img-top mt-2">
+                              </a>
+                                <% } %>
+                          </div>
+                        <% } %>
                        
                       </div>
                     </div>
