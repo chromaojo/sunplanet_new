@@ -95,8 +95,8 @@ router.post("/props/create", propertyController.createProperty);
 router.get("/props/", propertyController.getAllPropertiesAdmin);
 router.get("/props/:id", propertyController.getPropertyByIdAdmin);
 
-router.put("//props:id", propertyController.updateProperty);
-router.delete("props/:id", propertyController.deleteProperty);
+router.put("/props:id", propertyController.updateProperty);
+router.get("/props/del/:id", propertyController.deleteProperty);
 
 
 

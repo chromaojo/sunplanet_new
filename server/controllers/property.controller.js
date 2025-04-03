@@ -40,16 +40,12 @@ exports.createProperty = async (req, res) => {
         }
 
         try {
-            // Collect file paths of uploaded images
-            let imagePaths = [];
-            if (req.files && req.files.length > 0) {
-                imagePaths = req.files.map(file => file.path); // Save paths to database
-            }
-
+            
             // Add image paths to req.body
-            req.body.images = imagePaths; // Assuming the 'images' field is a JSON string in the model
-            const pix = ""+imagePaths+""
-            req.body.picture = pix;
+            const pictures = req.files.map(file => file.filename);
+            const picture = "" + pictures + "";
+
+            req.body.picture = picture;
             req.body.prop_id = random;
             
             const property = await Property.create(req.body);
@@ -273,8 +269,10 @@ exports.deleteProperty = async (req, res) => {
         await property.destroy();
         // res.json({ message: "Property deleted successfully" });
 
+        res.redirect('/spco/props')
 
     } catch (error) {
+
         res.status(500).json({ error: error.message });
     }
 };
