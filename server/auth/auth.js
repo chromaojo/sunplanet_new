@@ -72,7 +72,7 @@ exports.AdminRole = async (req, res, next) => {
 
 exports.InvestorRole = async (req, res, next) => {
 
-    const userData = jwt.verify(req.cookies.admin, process.env.JWT_SECRET);
+    const userData = jwt.verify(req.cookies.investor, process.env.JWT_SECRET);
 
     if (userData.acct_type === 'investor') {
         return next();

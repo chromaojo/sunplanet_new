@@ -30,7 +30,7 @@
                             <div>
                               <a href="/tnt/rental/<%= props.id %>">
                                 <img src="/assets/img/curved-images/curved1.jpg"
-                                class="avatar avatar-sm rounded-circle me-2" alt="spotify">
+                                class="avatar avatar-sm rounded-circle me-2" alt="Index Image">
                               </a>
                               
                             </div>
@@ -45,14 +45,16 @@
                         </div>
                       </td>
                       <td>
+                        <a href="/tnt/rental/<%= props.id %>">
                         <p class="text-sm font-weight-bold mb-0">
                           <%= props.property_type %>
-                        </p>
+                        </p></a>
                       </td>
                       <td>
+                        <a href="/tnt/rental/<%= props.id %>">
                         <p class="text-sm font-weight-bold mb-0">
                           ₦<%= Number (props.rent_price ).toLocaleString() %>
-                        </p>
+                        </p></a>
                       </td>
 
                       <td class="align-middle text-center">
@@ -88,7 +90,7 @@
                                 <div>
                                   <div class="progress">
                                     <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="95"
-                                      aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                                      aria-valuemin="0" aria-valuemax="100" style="width: 97%;"></div>
                                   </div>
                                 </div>
                               </div>
