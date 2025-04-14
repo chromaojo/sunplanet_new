@@ -1,3 +1,4 @@
+
 <div id="indeex">
   <div class="row mt-2 mb-4">
     <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
@@ -5,15 +6,21 @@
         <div class="card-body p-2 m-3">
           <div class="row">
             <div class="col-3 text-end p-1">
+              <!-- <img src="/assets/img/home-decor-3.jpg" alt="Image placeholder" class="card-img-top"> -->
               <img src="/assets1/img/logo.png" class="navbar-brand-img m-4" alt="main_logo" width="95%">
             </div>
             <div class="col-1"></div>
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Property Details </p>
+                <p class="text-sm text-capitalize mb-0 text-uppercase font-weight-bold">Property Details </p>
                 <h5 class="font-weight-bolder text-capitalize">
                   <%= rent.property_name %>
                 </h5>
+                <% if (rent.status== "approved") { %>
+                  <h4 class="font-weight-bolder text-capitalize text-success">
+                    Rent is approved.
+                  </h4>
+                <% } %>
               </div>
             </div>
 
@@ -22,167 +29,159 @@
       </div>
     </div>
   </div>
-  <div class="row mt-1">
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
+  <div class="row mt-3">
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-md-3">
+            <img src="/assets/img/home-decor-3.jpg" alt="Image placeholder" class="card-img-top mt-5">
+            <img src="/assets1/img/logo.png" class="navbar-brand-img mt-4" alt="main_logo" width="90%">
+            <img src="/assets/img/home-decor-2.jpg" alt="Image placeholder" class="card-img-top mt-4">
         </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Rent Fee</h6>
-          <span class="text-xs">
-            ₦ <%= rent.rent_price %>
-          </span>
-          <hr class="horizontal dark my-3">
-          <h5 class="mb-0 text-capitalize"><%= rent.status %></h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Rent Duration</h6>
-          <span class="text-xs">
-            <%= rent.rent_start_date %> -
-          </span>
-          <hr class="horizontal dark my-3">
-          <h5 class="mb-0 text-capitalize"><%= rent.rent_end_date %></h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0">Property Type</h6>
-          <span class="text-xs">
-            <%= rent.property_type %>
-          </span>
-          <hr class="horizontal dark my-3">
-          <h5 class="mb-0 text-capitalize"><%= rent.status %></h5>
-        </div>
-      </div>
-    </div>
+        <div class="col-md-9">
+          <div class="card card-profile">
+          
+            <div class="row justify-content-center">
+              <div class="col-4 col-lg-4 order-lg-2">
+                <!-- <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
+                  <a href="javascript:;">
+                    <img src="/assets/img/image1.png" class="rounded-circle img-fluid border border-2 border-white">
+                  </a>
+                </div> -->
+              </div>
+            </div>
 
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Occupant Name</h6>
-          <span class="text-xs">
-            <%= rent.occupant_name %>
-          </span>
-          <hr class="horizontal dark my-3">
-          <h5 class="mb-0 text-capitalize"><%= rent.status %></h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Occupant Phone</h6>
-          <span class="text-xs"><%= rent.occupant_phone %></span>
-          <hr class="horizontal dark my-3">
-          <h5 class="mb-0 text-capitalize text-capitalize"><%= rent.status %></h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Next Of Kin</h6>
-          <span class="text-xs"><%= rent.next_of_kin %></span>
-          <hr class="horizontal dark my-3">
-          <h5 class="mb-0 text-capitalize text-capitalize"><%= rent.kin_phone %></h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Kin Address</h6>
-          <span class="text-xs">
-            <%= rent.kin_address ? rent.kin_address : "Address is empty " %>
-          </span>
-          <hr class="horizontal dark my-3">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-xl-3 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Kin Phone</h6>
-          <span class="text-xs"><%= rent.kin_phone %></span>
-          <hr class="horizontal dark my-3">
-        </div>
-      </div>
-    </div>
+            <div class="card-body pt-5">
+              <h5>Occupant : <%= rent.occupant_name %>
+              </h5>
+              <% if (rent.status== "approved") { %>
+                <h3 class="font-weight-bolder text-capitalize text-success text-center">
+                  Rent is approved.
+                </h3>
+              <% } else if (rent.status == 'reject') { %>
+                <h3 class="font-weight-bolder text-capitalize text-success text-center">
+                  Rent is Rejected.
+                </h3>
+              <% } %>
+              
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Information</th>
 
-    <div class="col-md-6 col-xl-6 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-primary">
+                    <th scope="row">Occupant Name</th>
+                    <td>
+                      <%= rent.occupant_name %>
+                    </td>
+                  </tr>
+                  <tr class="table-danger">
+                    <th scope="row">Occupant Phone Number</th>
+                    <td>
+                      <%= rent.occupant_phone %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">Property Name</th>
+                    <td>
+                      <%= rent.property_name %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">Property Type</th>
+                    <td>
+                      <%= rent.property_type %>
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Property Address</th>
+                    <td>
+                      <%= rent.address %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Next Of Kin</th>
+                    <td>
+                      <%= rent.next_of_kin %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">NOK Phone</th>
+                    <td>
+                      <%= rent.kin_phone %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">NOK Address</th>
+                    <td>
+                      <%= rent.kin_address ? rent.kin_address : "Address Is Currently Empty" %>
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Rent Fee</th>
+                    <td>₦<%= Number (rent.rent_price).toLocaleString() %>
+                    </td>
+
+                  </tr>
+                  <tr class="table-danger">
+                    <th scope="row">Number Of Units booked</th>
+                    <td>
+                      <%= rent.unit %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">Application Status</th>
+                    <td class="text-capitalize">
+                      <%= rent.status %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">Rent Duration</th>
+                    <td>
+                      <%= rent.duration %> Days / Months
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Rent Starts</th>
+                    <td>
+                      <%= rent.address %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Next Of Kin</th>
+                    <td>
+                      <%= rent.next_of_kin %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">Rent Application Date</th>
+                    <td>
+                      <%= rent.createdAt %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">NOK Address</th>
+                    <td>
+                      <%= rent.property_type %>
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Admin Comment</th>
+                    <td>
+                      <%= rent.comment %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
           </div>
+
         </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0">Address</h6>
-          <span class="text-xs">
-            <%= rent.address %>
-          </span>
-          <hr class="horizontal dark my-3">
-        </div>
+   
       </div>
     </div>
-    <div class="col-md-6 col-xl-6 mb-2">
-      <div class="card">
-        <div class="card-header mx-4 p-3 text-center">
-          <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg w-100">
-            <i class="fas fa-landmark opacity-10"></i>
-          </div>
-        </div>
-        <div class="card-body pt-0 p-3 text-center">
-          <h6 class="text-center mb-0 text-capitalize">Admin Comment </h6>
-          <span class="text-xs"><%- rent.comment ? rent.comment : "No comment yet" %></span>
-          <hr class="horizontal dark my-3">
-        </div>
-      </div>
-    </div>
-    
   </div>
-</div>

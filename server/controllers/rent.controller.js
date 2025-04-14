@@ -73,6 +73,7 @@ exports.getAllRent = async (req, res) => {
 // GET SINGLE RENT RECORD
 exports.getRentByIdAdmin = async (req, res) => {
     try {
+
         const rent = await Rent.findByPk(req.params.id);
         if (!rent) return res.status(404).json({ error: "Rent record not found" });
 
@@ -146,12 +147,14 @@ exports.getRentById = async (req, res) => {
 
 // UPDATE RENT RECORD
 exports.updateRent = async (req, res) => {
+    console.log('The input is ', req.body)
     try {
         const rent = await Rent.findByPk(req.params.id);
         if (!rent) return res.status(404).json({ error: "Rent record not found" });
 
         await rent.update(req.body);
-        res.json({ message: "Rent record updated successfully", rent });
+        // res.json({ message: "Rent record updated successfully", rent });
+        res.redirect('/spco/rent/'+req.params.id);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

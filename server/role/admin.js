@@ -114,8 +114,8 @@ router.put("/help/:id", helpDeskController.updateHelpDesk);
 router.post("/create/rent", rentController.createRent);
 router.get("/rent/", rentController.getAllRent);
 router.get("/rent/:id", rentController.getRentByIdAdmin);
-router.put("/rent/:id", rentController.updateRent);
-router.delete("/rent/:id", rentController.deleteRent);
+router.post("/renting/:id", rentController.updateRent);
+router.delete("/del/rent/:id", rentController.deleteRent);
 
 
 

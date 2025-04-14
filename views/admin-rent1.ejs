@@ -10,10 +10,15 @@
             <div class="col-1"></div>
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Property Details </p>
+                <p class="text-sm text-capitalize mb-0 text-uppercase font-weight-bold">Property Details </p>
                 <h5 class="font-weight-bolder text-capitalize">
                   <%= rent.property_name %>
                 </h5>
+                <% if (rent.status== "approved") { %>
+                  <h4 class="font-weight-bolder text-capitalize text-success">
+                    Rent is approved.
+                  </h4>
+                <% } %>
               </div>
             </div>
 
@@ -39,137 +44,170 @@
             </div>
 
             <div class="card-body pt-5">
-              <h5>Occupant : <%= rent.occupant_name %></h5>
-              <div class="row mt-2">
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Occupant Name :</h1> 
-                    <span class="text-sm"> <%= rent.occupant_name %></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Occupant Phone :</h1> 
-                    <span class="text-sm"> <%= rent.occupant_phone %></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Property Name :</h1> 
-                    <span class="text-sm"> <%= rent.property_name %></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Property Type :</h1> 
-                    <span class="text-sm"> <%= rent.property_type %></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Next Of Kin :</h1> 
-                    <span class="text-sm"> <%= rent.next_of_kin %></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex"> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> NOK Phone :</h1> 
-                    <span class="text-sm"> <%= rent.kin_phone %></span>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="d-flex"> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Next Of Kin Address :</h1> 
-                    <span class="text-sm"> <%= rent.kin_address %></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-12">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Property Address :</h1> 
-                    <span class="text-sm"> <%= rent.address %></span>
-                  </div>
-                </div>
-                <div class="col-md-6 mt-2">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Rental Price :</h1> 
-                    <span class="text-sm"> ₦ <%= rent.rent_price %></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Unit Needed :</h1> 
-                    <span class="text-sm "> <%= rent.unit %></span>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-2">
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Rent Start:</h1> 
-                    <span class="text-sm"> <%= rent.rent_start_date %></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Rental Duration :</h1> 
-                    <span class="text-sm"> <%= rent.duration %></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="d-flex "> 
-                    <h1 class="text-sm opacity-8 mx-3 font-weight-bolder"> Unit Needed :</h1> 
-                    <span class="text-sm "> <%= rent.unit %></span>
-                  </div>
-                </div>
-              </div>
+              <h5>Occupant : <%= rent.occupant_name %>
+              </h5>
+              <% if (rent.status== "approved") { %>
+                <h3 class="font-weight-bolder text-capitalize text-success text-center">
+                  Rent is approved.
+                </h3>
+              <% } else if (rent.status == 'reject') { %>
+                <h3 class="font-weight-bolder text-capitalize text-success text-center">
+                  Rent is Rejected.
+                </h3>
+              <% } %>
+              
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Information</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-primary">
+                    <th scope="row">Occupant Name</th>
+                    <td>
+                      <%= rent.occupant_name %>
+                    </td>
+                  </tr>
+                  <tr class="table-danger">
+                    <th scope="row">Occupant Phone Number</th>
+                    <td>
+                      <%= rent.occupant_phone %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">Property Name</th>
+                    <td>
+                      <%= rent.property_name %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">Property Type</th>
+                    <td>
+                      <%= rent.property_type %>
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Property Address</th>
+                    <td>
+                      <%= rent.address %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Next Of Kin</th>
+                    <td>
+                      <%= rent.next_of_kin %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">NOK Phone</th>
+                    <td>
+                      <%= rent.kin_phone %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">NOK Address</th>
+                    <td>
+                      <%= rent.kin_address ? rent.kin_address : "Address Is Currently Empty" %>
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Rent Fee</th>
+                    <td>₦<%= Number (rent.rent_price).toLocaleString() %>
+                    </td>
+
+                  </tr>
+                  <tr class="table-danger">
+                    <th scope="row">Number Of Units booked</th>
+                    <td>
+                      <%= rent.unit %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">Application Status</th>
+                    <td class="text-capitalize">
+                      <%= rent.status %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">Rent Duration</th>
+                    <td>
+                      <%= rent.duration %> Days / Months
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Rent Starts</th>
+                    <td>
+                      <%= rent.address %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Next Of Kin</th>
+                    <td>
+                      <%= rent.next_of_kin %>
+                    </td>
+                  </tr>
+                  <tr class="table-secondary">
+                    <th scope="row">Rent Application Date</th>
+                    <td>
+                      <%= rent.createdAt %>
+                    </td>
+                  </tr>
+                  <tr class="table-success">
+                    <th scope="row">NOK Address</th>
+                    <td>
+                      <%= rent.property_type %>
+                    </td>
+                  </tr>
+                  <tr class="table-primary">
+                    <th scope="row">Admin Comment</th>
+                    <td>
+                      <%= rent.comment %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
             </div>
           </div>
 
         </div>
         <div class="col-md-4">
           <div class="card">
-            <div class="card-header pb-0">
-              <div class="d-flex align-items-center">
-                <p class="mb-0">Edit Profile</p>
-                <button class="btn btn-primary btn-sm ms-auto">Save</button>
-              </div>
-            </div>
-            <div class="card-body">
-              <p class="text-uppercase text-sm">User Information</p>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Full Name</label>
-                    <input class="form-control" type="text" value="<%= userData.full_name %>">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Email address</label>
-                    <input class="form-control" type="email" value="<%= userData.email %>">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">Phone Number</label>
-                    <input class="form-control" type="text" value="<%= userData.phone %>">
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-group">
-                    <label for="example-text-input" class="form-control-label">About</label>
-                    <input class="form-control" type="text" value="<%= userData.about ? userData.about : 'About section is currently empty' %>">
-                  </div>
+            <form action="/spco/renting/<%- rent.id %>" method="POST">
+              <div class="card-header pb-0">
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Approve Rental</p>
+                  <button class="btn btn-primary btn-sm ms-auto">Done</button>
                 </div>
               </div>
-              <!-- <hr class="horizontal dark">
-              <p class="text-uppercase text-sm">About me</p>
+              <div class="card-body">
+                <p class="text-uppercase text-sm text-capitalize">Rental Verification</p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <label for="disabledSelect" class="form-label">Rental Status</label>
+                      <select id="disabledSelect" class="form-select" name="status" required>
+                        <option value=""></option>
+                        <option value="approved">Approve</option>
+                        <option value="reject">Reject</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="example-text-input" class="form-control-label">Admin Comment</label>
+
+                      <textarea class="form-control" name="comment" id="" required></textarea>
+
+                    </div>
+                  </div>
+
+                </div>
+                <!-- <hr class="horizontal dark">
+              <p class="text-uppercase text-sm text-capitalize">About me</p>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -178,7 +216,8 @@
                   </div>
                 </div>
               </div> -->
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
